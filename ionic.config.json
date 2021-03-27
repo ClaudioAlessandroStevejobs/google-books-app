@@ -1,0 +1,7 @@
+{
+  "name": "google-books-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
