@@ -1,0 +1,38 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-img src="../../assets/images/g.png" style="width: 6em; padding-left: 2em;"></ion-img>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-tabs>
+  <ion-tab-bar>
+    <ion-tab-button tab="home">
+      <ion-icon name="home-outline"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="books" class="books-btn">
+      <ion-icon name="book-outline" class="books-icon"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf="role()!='WRITER'" class="search-btn" tab="search">
+      <ion-icon name="search-outline" class="search-icon"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf="role()=='WRITER'" class="new-book-btn" tab="new-book">
+      <ion-icon name="add-circle-outline" class="new-book-icon"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf="role()!='WRITER'" class="cart-btn" tab="cart">
+      <ion-badge *ngIf="role()=='READER' && inventorySize()!=0" color="success">{{inventorySize()}}</ion-badge>
+      <ion-icon name="cart-outline" class="cart-icon"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf="role()=='WRITER'" class="stats-btn" tab="stats">
+      <ion-icon name="stats-chart-outline" class="stats-icon"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="account">
+      <ion-icon name="person-outline" class="account-icon"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

@@ -1,0 +1,32 @@
+ion-tab-button:hover, ion-tab-button.tab-selected {
+  .books-icon {
+    color: #44B45A;
+  }
+  .search-icon {
+    color: #EC493A;
+  }
+  .new-book-icon {
+    color: #EC493A;
+  }
+  .stats-icon {
+    color: #FBC401;
+  }
+  .cart-icon {
+    color: #FBC401;
+  }
+  .account-icon {
+    color: #3880FF;
+  }
+}
+
+ion-tab-button.books-btn {
+  --ripple-color: #44B45A;
+}
+
+ion-tab-button.search-btn, ion-tab-button.new-book-btn {
+  --ripple-color: #EC493A;;
+}
+
+ion-tab-button.stats-btn, ion-tab-button.cart-btn {
+  --ripple-color: #FBC401;
+}

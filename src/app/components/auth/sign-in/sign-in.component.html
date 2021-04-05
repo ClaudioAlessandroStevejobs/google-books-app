@@ -1,0 +1,21 @@
+<ion-input placeholder="E-mail" type="email" inputmode="email" mode="ios" [(ngModel)]="email"></ion-input>
+<ion-input placeholder="Password" type="password" inputmode="text" mode="ios" [(ngModel)]="password"></ion-input>
+
+<ion-list>
+
+  <ion-radio-group value="role" name="role">
+
+    <ion-item>
+      <ion-label>I'm a reader</ion-label>
+      <ion-radio slot="start" (click)="role='READER'"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>I'm a writer</ion-label>
+      <ion-radio slot="start" (click)="role='WRITER'"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+</ion-list>
+
+
+<ion-button type="submit" (click)="submit()" expand="block" color="success" shape="round">Submit</ion-button>
