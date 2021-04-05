@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="7311" height="3567" viewBox="0 0 2437 1189">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        font-size: 1155.604px;
+      }
+
+      .cls-1, .cls-5 {
+        fill: #4285f4;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5 {
+        text-anchor: middle;
+        font-family: "Product Sans";
+      }
+
+      .cls-2 {
+        fill: #ea4335;
+      }
+
+      .cls-3 {
+        fill: #fbbc05;
+      }
+
+      .cls-4 {
+        fill: #34a853;
+      }
+
+      .cls-5 {
+        font-size: 250px;
+      }
+    </style>
+  </defs>
+  <text id="G" class="cls-1" transform="matrix(0.725, 0, 0, 0.725, 437.176, 873.078)"><tspan x="0">G</tspan></text>
+  <text id="U" class="cls-2" transform="matrix(0.725, 0, 0, 0.725, 999.701, 872.571)"><tspan x="0">u</tspan></text>
+  <text id="G-2" data-name="G" class="cls-3" transform="matrix(0.725, 0, 0, 0.725, 1468.702, 872.571)"><tspan x="0">g</tspan></text>
+  <text id="O" class="cls-1" transform="matrix(0.725, 0, 0, 0.725, 1930.545, 873.571)"><tspan x="0">o</tspan></text>
+  <text id="L" class="cls-4" transform="matrix(0.725, 0, 0, 0.725, 2252.702, 872.571)"><tspan x="0">l</tspan></text>
+  <text id="Bucs" class="cls-5" transform="translate(1882.88 1064.15) scale(0.621)"><tspan x="0">Bucs</tspan></text>
+  <text id="Bucs_copia_2" data-name="Bucs copia 2" class="cls-5" transform="translate(1882.88 1064.15) scale(0.621)"><tspan x="0">Bucs</tspan></text>
+</svg>
