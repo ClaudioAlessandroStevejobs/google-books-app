@@ -1,0 +1,37 @@
+<ion-input placeholder="E-mail" type="email" inputmode="email" mode="ios" required [(ngModel)]="email"></ion-input>
+<ion-input placeholder="Password" type="password" inputmode="text" mode="ios" required [(ngModel)]="password">
+</ion-input>
+<ion-input placeholder="Confirm password" type="password" inputmode="text" mode="ios" required
+  [(ngModel)]="confirmPassword"></ion-input>
+<ion-list>
+
+  <!-- nation form
+    <div class="form-group col-md-4 w-100">
+      <select class="custom-select form-control" type="number" [(ngModel)]="selectedNation">
+        <option *ngFor="let nation of nations" [ngValue]="nation">{{nation}}</option>
+      </select>
+    </div> -->
+
+
+  <ion-item>
+    <ion-label>Where are you from?</ion-label>
+    <ion-select interface="action-sheet" mode="ios" [(ngModel)]="selectedNation">
+      <ion-select-option *ngFor="let nation of nations" [value]="nation">{{nation}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-radio-group value="role" name="role">
+
+    <ion-item>
+      <ion-label>I'm a reader</ion-label>
+      <ion-radio slot="start" (click)="role='READER'"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>I'm a writer</ion-label>
+      <ion-radio slot="start" (click)="role='WRITER'"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+</ion-list>
+
+<ion-button type="submit" (click)="submit()" expand="block" color="success" shape="round">Submit</ion-button>

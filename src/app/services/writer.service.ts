@@ -19,30 +19,47 @@ export class WriterService {
       .toPromise() as Promise<Writer>;
   };
 
-  addBook = async (title: string, price: number, genre: string, description: string, editor: string) => {
+  addBook = async (
+    title: string,
+    price: number,
+    genre: string,
+    description: string,
+    editor: string
+  ) => {
     const token = localStorage.getItem('token')!;
     const headers = new HttpHeaders().set('token', token);
-    const editors = [editor]
+    const editors = [editor];
     try {
       await this.httpClient
-        .post(`${this.writerURI}/${localStorage.getItem('id')}/book`, {
-          title,
-          price,
-          genre,
-          description,
-          editors,
-        }, { headers })
-        .toPromise().catch(err => {
+        .post(
+          `${this.writerURI}/${localStorage.getItem('id')}/book`,
+          {
+            title,
+            price,
+            genre,
+            description,
+            editors,
+          },
+          { headers }
+        )
+        .toPromise()
+        .catch((err) => {
           switch (err.status) {
-            case 400: alert('Bad request'); break;
-            case 401: alert('Unauthorized'); break;
-            case 500: alert('Server internal error'); break;
+            case 400:
+              alert('Bad request');
+              break;
+            case 401:
+              alert('Unauthorized');
+              break;
+            case 500:
+              alert('Server internal error');
+              break;
           }
           return undefined;
         });
     } catch (error) {
       // this.status = error.status;
-      if (error.status == 500) throw new Error(error)
+      if (error.status == 500) throw new Error(error);
     }
-  }
+  };
 }
