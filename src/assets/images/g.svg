@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4149" height="2499" viewBox="0 0 1383 833">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 1155.604px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #4285f4;
+        text-anchor: middle;
+        font-family: "Product Sans";
+      }
+
+      .cls-2 {
+        font-size: 250px;
+      }
+    </style>
+  </defs>
+  <text id="G" class="cls-1" transform="matrix(0.725, 0, 0, 0.725, 437.177, 709.078)"><tspan x="0">G</tspan></text>
+  <text id="Bucs_copia_2" data-name="Bucs copia 2" class="cls-2" transform="translate(1008.863 513.245) scale(0.913)"><tspan x="0">Bucs</tspan></text>
+</svg>

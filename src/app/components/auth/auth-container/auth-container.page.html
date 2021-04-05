@@ -1,0 +1,57 @@
+<ion-content>
+
+
+  <ion-grid fixed="true">
+    <ion-row>
+      <ion-col>
+        <img src="../../../../assets/images/logo.png" alt="" srcset="" class="img-logo">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-title class="sub-title">Powered by Oloregast.</ion-title>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+
+
+
+        <ion-card>
+          <ion-card-header>
+            <ion-row>
+              <ion-title *ngIf="formMode=='SIGN-IN'">Sign-in</ion-title>
+              <ion-title *ngIf="formMode=='SIGN-UP'">Sign-up</ion-title>
+            </ion-row>
+          </ion-card-header>
+
+          <ion-card-content>
+            <app-sign-in *ngIf="formMode=='SIGN-IN'"></app-sign-in>
+            <app-sign-up *ngIf="formMode=='SIGN-UP'"></app-sign-up>
+          </ion-card-content>
+        </ion-card>
+
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-title *ngIf="formMode=='SIGN-IN'" class="orLabel">Is it a new face?</ion-title>
+        <ion-title *ngIf="formMode=='SIGN-UP'" class="orLabel">We know you!</ion-title>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button class="switch-button" type="submit" (click)="formModeChange()" expand="block" color="primary"
+          shape="round">{{changeButtonLabel}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+
+</ion-content>

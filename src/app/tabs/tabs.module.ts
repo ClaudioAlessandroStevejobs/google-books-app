@@ -4,16 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HomePage } from './home.page';
-import { RouterModule } from '@angular/router';
+import { TabsPageRoutingModule } from './tabs-routing.module';
+
+import { TabsPage } from './tabs.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild([{ path: '', component: HomePage }]),
+    TabsPageRoutingModule
   ],
-  declarations: [HomePage],
+  declarations: [TabsPage]
 })
-export class HomePageModule {}
+export class TabsPageModule {}

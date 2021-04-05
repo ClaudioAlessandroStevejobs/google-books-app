@@ -4,16 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HomePage } from './home.page';
-import { RouterModule } from '@angular/router';
+import { LoggedOutPageRoutingModule } from './logged-out-routing.module';
+
+import { LoggedOutPage } from './logged-out.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild([{ path: '', component: HomePage }]),
+    LoggedOutPageRoutingModule
   ],
-  declarations: [HomePage],
+  declarations: [LoggedOutPage]
 })
-export class HomePageModule {}
+export class LoggedOutPageModule {}
