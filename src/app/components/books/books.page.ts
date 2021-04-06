@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Book } from 'src/app/interfaces/book';
 
 @Component({
   selector: 'app-books',
@@ -8,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class BooksPage implements OnInit {
   constructor(private router: Router) {}
+
+  books: Book[] | undefined;
 
   ngOnInit() {}
 

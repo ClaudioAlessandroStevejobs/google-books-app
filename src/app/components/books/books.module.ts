@@ -1,3 +1,4 @@
+import { BookItemModule } from './../book-item/book-item.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,8 +14,9 @@ import { BooksPage } from './books.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    BooksPageRoutingModule
+    BooksPageRoutingModule,
+    BookItemModule,
   ],
-  declarations: [BooksPage]
+  declarations: [BooksPage],
 })
 export class BooksPageModule {}
