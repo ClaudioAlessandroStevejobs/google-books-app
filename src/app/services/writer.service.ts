@@ -8,7 +8,7 @@ import { Writer } from '../interfaces/writer';
 export class WriterService {
   writerURI = 'http://localhost:3001/writer';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   getWriter = () => {
     const token = localStorage.getItem('token')!;

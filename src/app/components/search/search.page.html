@@ -17,25 +17,11 @@
       </ion-col>
     </ion-row>
 
-    <ion-row>
-      <ion-col *ngFor="let book of searchedBooks">
-        <ion-card class="card">
-          <ion-img [src]="book._img" class="img"></ion-img>
-          <br />
-          <ion-title> {{book._title}} </ion-title>
-          <ion-title> {{book._author}} </ion-title>
-          <ion-card-content>
-            <ion-title> {{book._description}} </ion-title>
-            <ion-title>
-              <ion-button shape="round" color="success">
-                €{{ book._price }}
-                <ion-icon name="cart-outline"></ion-icon>
-              </ion-button>
-            </ion-title>
-          </ion-card-content>
-        </ion-card>
-
+    <ion-row *ngFor="let book of searchedBooks" >
+      <ion-col>
+        <app-book-item style="width: 90%" [isCard] = 'false' [book]="book"></app-book-item>
       </ion-col>
+      
     </ion-row>
   </ion-grid>
 

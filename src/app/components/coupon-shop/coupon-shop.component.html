@@ -1,0 +1,16 @@
+<h2 style="margin-left: 3%;" class="alignment">Generate a coupon</h2>
+
+<form (ngSubmit)="logForm()">
+  <ion-item>
+    <ion-label position="stacked">Insert money</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="todo.title" placeholder="1234" name="title"></ion-input> <ion-button color="primary">Send</ion-button>
+  </ion-item> 
+  <ion-item>
+    <ion-label position="stacked">Insert mail</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-textarea [(ngModel)]="todo.description" placeholder="example@email.com" name="description"></ion-textarea>
+  </ion-item>
+</form>

@@ -11,7 +11,7 @@ const routes: Routes = [
         path: 'auth',
         loadChildren: () =>
           import(
-            '../components/auth/auth-container/auth-container.module'
+            '../auth/auth-container/auth-container.module'
           ).then((m) => m.AuthContainerPageModule),
       },
       {
@@ -22,35 +22,35 @@ const routes: Routes = [
       {
         path: 'account',
         loadChildren: () =>
-          import('../components/account/account.module').then(
+          import('../account/account.module').then(
             (m) => m.AccountPageModule
           ),
       },
       {
         path: 'books',
         loadChildren: () =>
-          import('../components/books/books.module').then(
+          import('../books/books.module').then(
             (m) => m.BooksPageModule
           ),
       },
       {
         path: 'cart',
         loadChildren: () =>
-          import('../components/cart/cart.module').then(
+          import('../cart/cart.module').then(
             (m) => m.CartPageModule
           ),
       },
       {
         path: 'search',
         loadChildren: () =>
-          import('../components/search/search.module').then(
+          import('../search/search.module').then(
             (m) => m.SearchPageModule
           ),
       },
       {
         path: 'logged-out',
         loadChildren: () =>
-          import('../components/logged-out/logged-out.module').then(
+          import('../logged-out/logged-out.module').then(
             (m) => m.LoggedOutPageModule
           ),
       },

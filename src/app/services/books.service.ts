@@ -6,11 +6,11 @@ import { Book } from '../interfaces/book';
   providedIn: 'root',
 })
 export class BooksService {
-  booksURI = 'http://localhost:3001/books';
-  constructor(private httpClient: HttpClient) {}
+  uri = 'http://localhost:3001/';
+  constructor(private httpClient: HttpClient) { }
 
   getBooks = () =>
-    this.httpClient.get(this.booksURI).toPromise() as Promise<Book[]>;
+    this.httpClient.get(this.uri + 'books').toPromise() as Promise<Book[]>;
 
   getBooksByIds = async (
     booksIds: string[] = [],
@@ -18,13 +18,15 @@ export class BooksService {
   ): Promise<Book[]> => {
     try {
       const books = await this.getBooks();
-      return books.filter((book) => {
-        return exclude
-          ? !booksIds.includes(book._id)
-          : booksIds.includes(book._id);
-      });
+      return books.filter((book) => 
+        exclude ? !booksIds.includes(book._id) : booksIds.includes(book._id)
+      );
     } catch (err) {
       throw new Error(err);
     }
   };
+
+  getAuthorName = (id: string) => 
+    this.httpClient.get(this.uri + `writer-name/${id}`).toPromise() as Promise<string>
+  
 }

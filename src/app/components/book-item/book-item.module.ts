@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
+import { BookItemComponent } from './book-item.component';
 
-import { HomePage } from './home.page';
-import { RouterModule } from '@angular/router';
+
 
 @NgModule({
+  declarations: [BookItemComponent],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild([{ path: '', component: HomePage }]),
   ],
-  declarations: [HomePage],
+  exports: [BookItemComponent]
 })
-export class HomePageModule {}
+export class BookItemModule { }

@@ -1,3 +1,4 @@
+import { BookItemModule } from './../book-item/book-item.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,8 @@ import { SearchPage } from './search.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    SearchPageRoutingModule
+    SearchPageRoutingModule,
+    BookItemModule
   ],
   declarations: [SearchPage]
 })
