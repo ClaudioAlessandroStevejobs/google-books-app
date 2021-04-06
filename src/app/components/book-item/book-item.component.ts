@@ -14,6 +14,7 @@ export class BookItemComponent implements OnInit {
   price : string;
   author : string;
   @Input() book: Book;
+  @Input() isCard: boolean;
   constructor(private booksService: BooksService) { }
 
   ngOnInit() {

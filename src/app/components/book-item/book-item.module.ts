@@ -12,6 +12,7 @@ import { BookItemComponent } from './book-item.component';
     CommonModule,
     FormsModule,
     IonicModule,
-  ]
+  ],
+  exports: [BookItemComponent]
 })
 export class BookItemModule { }

@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { BookDetailsPageRoutingModule } from './book-details-routing.module';
-
 import { BookDetailsPage } from './book-details.page';
 
 @NgModule({
@@ -14,7 +12,6 @@ import { BookDetailsPage } from './book-details.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    BookDetailsPageRoutingModule,
   
   ],
   declarations: [BookDetailsPage]

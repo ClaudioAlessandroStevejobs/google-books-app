@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ItemComponent } from './item.component';
+import { CouponShopComponent } from './coupon-shop.component';
 
 describe('ItemComponent', () => {
-  let component: ItemComponent;
-  let fixture: ComponentFixture<ItemComponent>;
+  let component: CouponShopComponent;
+  let fixture: ComponentFixture<CouponShopComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ItemComponent ],
+      declarations: [ CouponShopComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ItemComponent);
+    fixture = TestBed.createComponent(CouponShopComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

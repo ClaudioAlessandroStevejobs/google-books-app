@@ -4,10 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { AccountPageModule } from '../account/account.module'
-import { BookDetailsPageModule } from '../book-details/book-details.module';
-
-import { BookItemComponent } from '../book-item/book-item.component'
 import { IonicModule } from '@ionic/angular';
+import { BookItemModule } from '../book-item/book-item.module';
 
 @NgModule({
   imports: [
@@ -16,8 +14,8 @@ import { IonicModule } from '@ionic/angular';
     IonicModule,
     HomePageRoutingModule,
     AccountPageModule,
-    BookDetailsPageModule
+    BookItemModule
   ],
-  declarations: [HomePage, BookItemComponent]
+  declarations: [HomePage]
 })
 export class HomePageModule {}

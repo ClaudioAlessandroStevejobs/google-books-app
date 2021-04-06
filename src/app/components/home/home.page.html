@@ -1,21 +1,18 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <img width="20%" src = "../../assets/g.png" />
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-searchbar placeholder="Search books here"></ion-searchbar>
-  <ion-item-divider>Novità</ion-item-divider>
-  <ion-slides slidesPerView = '2' spaceBetween = '1'>
-    <ion-slide *ngFor="let book of newBooks" >
-        <app-book-item [book] = 'book'></app-book-item>
-    </ion-slide>
-  </ion-slides>
-  <ion-item-divider>Più venduti</ion-item-divider>
-  <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
-    <ion-slide *ngFor="let book of bestBooks" style="height: 20%; ">
-        <app-book-item [book] = 'book'></app-book-item>
-    </ion-slide>
-  </ion-slides>
+  <ion-card-content>
+    <ion-title>News</ion-title>
+    <ion-slides [options]="{ slidesPerView: '2', zoom: false, grabCursor: true }">
+      <ion-slide  *ngFor="let book of newBooks" >
+          <app-book-item [isCard]='true' [book] = 'book'></app-book-item>
+      </ion-slide>
+    </ion-slides>
+  </ion-card-content>
+  <ion-card-content>
+    <ion-title>Best Seller</ion-title>
+    <ion-slides [options]="{ slidesPerView: '2', zoom: false, grabCursor: true }">
+      <ion-slide  *ngFor="let book of bestBooks">
+          <app-book-item [isCard]='true' [book] = 'book'></app-book-item>
+      </ion-slide>
+    </ion-slides>
+  </ion-card-content>
 </ion-content>

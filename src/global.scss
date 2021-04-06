@@ -134,10 +134,13 @@ ion-card {
 
 ion-card-title {
   color: black;
-  font-weight: 500;
-  padding-top: 1em;
+  font-weight: 600;
+  padding-top: 0.8em;
 }
-
+ion-card-subtitle {
+  font-size: 1.3em;
+  padding-top: 0.5em;
+}
 
 ion-input {
   background-color: rgb(250, 250, 250);
@@ -179,5 +182,5 @@ ion-text h2{
 
 ion-item {
   color: black;
+  --border-style: none;
 }
-

@@ -10,22 +10,24 @@ import { BooksService } from '../../services/books.service';
 })
 export class HomePage{
   constructor(private booksService: BooksService) {}
-  books: Book[] = [];
   newBooks: Book[] = [];
   bestBooks: Book[] = [];
   async ngOnInit () {
     try {
       const books = await this.booksService.getBooks();
-      this.books = books;
-      this.newBooks = books.filter(book =>{
-         console.log('data libro: ', moment(book._launchDate, 'DD/MM/YYYY').toDate(), 'data agg: ',  moment().subtract(3000, 'days').toDate())
-        return moment(book._launchDate, 'DD/MM/YYYY').toDate() > moment().subtract(3, 'days').toDate()
-      })
-      this.bestBooks = books.sort((a: Book, b: Book) => 
-        b._soldCopies - a._soldCopies
+      console.log('books: ', books)
+      this.newBooks = books.map(b => b).sort((bookA: Book, bookB: Book) =>
+        moment(bookA._launchDate, 'DD/MM/YYYY').unix() 
+          - moment(bookB._launchDate, 'DD/MM/YYYY').unix()
       )
-    } catch (err) {
-      alert(err.err);
+      console.log('new: ', this.newBooks)
+      this.bestBooks = books.map(b => b).sort((bookA: Book, bookB: Book) => 
+        bookA._soldCopies - bookB._soldCopies
+      )
+      
+      console.log('best: ', this.bestBooks)
+    } catch ({err}) {
+      alert(err);
     }
   }
   // getAuthorName = async (id: string) : Promise<string> => {
