@@ -14,25 +14,6 @@ const routes: Routes = [
     loadChildren: () =>
       import('./tabs/tabs.module').then((m) => m.TabsPageModule),
   },
-  {
-    path: 'logged-out',
-    loadChildren: () =>
-      import('./components/logged-out/logged-out.module').then(
-        (m) => m.LoggedOutPageModule
-      ),
-  },  {
-    path: 'cart',
-    loadChildren: () => import('./components/cart/cart.module').then( m => m.CartPageModule)
-  },
-  {
-    path: 'books',
-    loadChildren: () => import('./components/books/books.module').then( m => m.BooksPageModule)
-  },
-  {
-    path: 'search',
-    loadChildren: () => import('./components/search/search.module').then( m => m.SearchPageModule)
-  },
-
 ];
 
 @NgModule({

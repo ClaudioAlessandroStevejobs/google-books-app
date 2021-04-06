@@ -9,3 +9,16 @@
   font-size: 1.2em;
   color: gray
 }
+
+ion-item {
+  background-color: rgb(250, 250, 250);
+  transition: all ease-in-out 0.1s;
+  color: black;
+  text-align: left;
+  text-indent: 2em;
+  margin: 1em 0em 0.5em 0em;
+  border-radius: 20em;
+  border-style: solid;
+  border-width: 0.1em;
+  border-color: rgb(250, 250, 250);
+}
