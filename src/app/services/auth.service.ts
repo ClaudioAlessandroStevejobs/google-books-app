@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {
   LoginResponse,
-  LogoutResponse,
-  RegisterResponse,
+  LogoutResponse
 } from '../interfaces/auth';
+import { customAlert } from '../utilities/alert';
 @Injectable({
   providedIn: 'root',
 })
@@ -14,7 +14,6 @@ export class AuthService {
   logoutURI = 'http://localhost:3001/auth/logout';
   statusCode: number | undefined;
   constructor(private httpClient: HttpClient) {}
-
   login = (
     email: string,
     password: string,
@@ -31,10 +30,10 @@ export class AuthService {
       .catch((err) => {
         switch (err.status) {
           case 401:
-            alert('Email not found');
+            customAlert(err.status, 'Missing email', 'Email address not found')
             break;
           case 403:
-            alert('Wrong password');
+            customAlert(err.status, 'Wrong password', 'Wrong password for this account');
             break;
           case 400:
             alert('Bad request');
@@ -64,7 +63,7 @@ export class AuthService {
       .catch((err) => {
         switch (err.status) {
           case 409:
-            alert('Account already exists');
+            customAlert(err.status, 'Already exists', 'This email has already registered')
             break;
           case 400:
             alert('Bad request');

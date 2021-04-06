@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Reader } from '../interfaces/reader';
+import { customAlert } from '../utilities/alert';
 @Injectable({
   providedIn: 'root',
 })
@@ -40,10 +41,7 @@ export class ReaderService {
       .catch((err) => {
         switch (err.status) {
           case 403:
-            alert('Not enough money');
-            break;
-          case 404:
-            alert('Bad request');
+            customAlert(err.status, 'Not enough money', 'Your sold is not enough for buyng this coupon')
             break;
           case 400:
             alert('Bad request');
@@ -75,10 +73,7 @@ export class ReaderService {
       .catch((err) => {
         switch (err.status) {
           case 403:
-            alert('Not enough money');
-            break;
-          case 404:
-            alert('Bad request');
+            customAlert(err.status, 'Not enough money', 'Your sold is not enough for buyng this gift')
             break;
           case 400:
             alert('Bad request');
@@ -135,13 +130,10 @@ export class ReaderService {
       .catch((err) => {
         switch (err.status) {
           case 403:
-            alert('Not enough money');
+            customAlert(err.status, 'Not enough money', 'Your sold is not enough for this order')
             break;
           case 409:
-            alert('Have already book');
-            break;
-          case 404:
-            alert('Bad request');
+            customAlert(err.status, 'Book already owned', 'One or more books are already in your library');
             break;
           case 400:
             alert('Bad request');
