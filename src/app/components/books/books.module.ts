@@ -16,12 +16,8 @@ import { HeaderModule } from '../header/header.module';
     FormsModule,
     IonicModule,
     BooksPageRoutingModule,
-<<<<<<< HEAD
     BookItemModule,
     HeaderModule,
-=======
-    BookItemModule
->>>>>>> 3e0e1814b57cc6e2d6d5ff69f5d327efc16de345
   ],
   declarations: [BooksPage],
 })

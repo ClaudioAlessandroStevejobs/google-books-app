@@ -13,22 +13,31 @@ import { drawAccImg } from 'src/app/utilities/drawAccImg';
   templateUrl: './books.page.html',
   styleUrls: ['./books.page.scss'],
 })
-export class BooksPage implements OnInit {
-  constructor(private router: Router, private readerService: ReaderService, private writerService: WriterService, private booksService: BooksService) {}
-  // ss = drawAccImg('sss')
+export class BooksPage {
+  constructor(
+    private router: Router,
+    private readerService: ReaderService,
+    private writerService: WriterService,
+    private booksService: BooksService
+  ) {}
   user: Reader | Writer;
   myBooks: Book[];
-  async ngOnInit() {
-    console.log(localStorage.getItem('role'));
-    ({
-      WRITER: async () => { this.myBooks =  await this.booksService.getBooksByIds((await this.writerService.getWriter())._booksIds)},
-      READER: async () => { this.myBooks =  await this.booksService.getBooksByIds((await this.readerService.getReader())._booksIds)}
-    }[localStorage.getItem('role')])();
-  }
-
-  ionViewDidEnter() {
+  ionViewWillEnter() {
     if (!localStorage.getItem('role')) {
       this.router.navigate(['logged-out']);
     }
+    ({
+      WRITER: async () => {
+        this.myBooks = await this.booksService.getBooksByIds(
+          (await this.writerService.getWriter())._booksIds
+        );
+      },
+      READER: async () => {
+        this.myBooks = await this.booksService.getBooksByIds(
+          (await this.readerService.getReader())._booksIds
+        );
+      },
+    }[localStorage.getItem('role')]());
+    console.log(this.myBooks);
   }
 }

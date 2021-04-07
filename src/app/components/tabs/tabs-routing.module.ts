@@ -53,17 +53,24 @@ const routes: Routes = [
           ),
       },
       {
-<<<<<<< HEAD
-=======
         path: 'books/:id',
         component: BookDetailsPage,
       },
       {
         path: 'insights',
-        loadChildren: () => import('../insights/insights.module').then((m) => m.InsightsModule)
+        loadChildren: () =>
+          import('../insights/insights.module').then((m) => m.InsightsModule),
+        canActivate: [LoginGuard],
       },
       {
->>>>>>> 3e0e1814b57cc6e2d6d5ff69f5d327efc16de345
+        path: 'new-book',
+        loadChildren: () =>
+          import('../book-form/book-form.module').then(
+            (m) => m.BookFormPageModule
+          ),
+        canActivate: [LoginGuard],
+      },
+      {
         path: '',
         redirectTo: '/home',
         pathMatch: 'full',

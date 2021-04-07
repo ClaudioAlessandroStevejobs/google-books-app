@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./components/tabs/tabs.module').then((m) => m.TabsPageModule),
   },
+  {
+    path: 'book-form',
+    loadChildren: () => import('./components/book-form/book-form.module').then( m => m.BookFormPageModule)
+  },
 ];
 
 @NgModule({
