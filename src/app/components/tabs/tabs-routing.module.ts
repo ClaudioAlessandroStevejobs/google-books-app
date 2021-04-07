@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BookDetailsPageModule } from '../book-details/book-details.module';
+import { LoginGuard } from 'src/app/utilities/login.guard';
 import { BookDetailsPage } from '../book-details/book-details.page';
 import { TabsPage } from './tabs.page';
 
@@ -25,17 +25,20 @@ const routes: Routes = [
         path: 'books',
         loadChildren: () =>
           import('../books/books.module').then((m) => m.BooksPageModule),
+        canActivate: [LoginGuard],
       },
       {
         path: 'account',
         loadChildren: () =>
           import('../account/account.module').then((m) => m.AccountPageModule),
+        canActivate: [LoginGuard],
       },
 
       {
         path: 'cart',
         loadChildren: () =>
           import('../cart/cart.module').then((m) => m.CartPageModule),
+        canActivate: [LoginGuard],
       },
       {
         path: 'search',
@@ -48,10 +51,6 @@ const routes: Routes = [
           import('../logged-out/logged-out.module').then(
             (m) => m.LoggedOutPageModule
           ),
-      },
-      {
-        path: 'books/:id',
-        component: BookDetailsPage,
       },
       {
         path: '',

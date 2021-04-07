@@ -2,13 +2,6 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   loadChildren: () =>
-  //     import('./components/auth/auth-container/auth-container.module').then(
-  //       (m) => m.AuthContainerPageModule
-  //     ),
-  // },
   {
     path: '',
     loadChildren: () =>

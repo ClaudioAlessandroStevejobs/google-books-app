@@ -27,6 +27,6 @@ export class BookItemComponent implements OnInit {
   }
 
   redirectToDetails = () => {
-    this.router.navigate([`books/${this.book._id}`]);
+    this.router.navigate([`search/books/${this.book._id}`]);
   };
 }

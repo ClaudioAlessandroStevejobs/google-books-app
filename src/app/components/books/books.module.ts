@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { BooksPageRoutingModule } from './books-routing.module';
 
 import { BooksPage } from './books.page';
+import { HeaderModule } from '../header/header.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { BooksPage } from './books.page';
     IonicModule,
     BooksPageRoutingModule,
     BookItemModule,
+    HeaderModule,
   ],
   declarations: [BooksPage],
 })

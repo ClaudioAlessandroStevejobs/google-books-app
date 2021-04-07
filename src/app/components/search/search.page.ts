@@ -14,6 +14,7 @@ export class SearchPage implements OnInit, OnChanges {
   books: Book[] | undefined = [];
   searchedBooks: Book[] | undefined = [];
   search: string;
+  reader: Reader;
   constructor(
     private booksService: BooksService,
     private router: Router,
@@ -24,6 +25,10 @@ export class SearchPage implements OnInit, OnChanges {
     try {
       const books = await this.booksService.getBooks();
       this.books = books;
+
+      if (localStorage.getItem('token')) {
+        this.reader = await this.readerService.getReader();
+      }
     } catch (err) {
       throw new Error(err);
     }
@@ -36,9 +41,13 @@ export class SearchPage implements OnInit, OnChanges {
       this.search !== '' && this.search !== ' '
         ? this.books.filter(
             (book) =>
-              book._author.includes(this.search) ||
-              book._title.includes(this.search) ||
-              String(book._price) == this.search
+              (book._author.includes(this.search) ||
+                book._title.includes(this.search) ||
+                String(book._price) == this.search) &&
+              !this.reader?._booksIds.includes(book._id) &&
+              !JSON.parse(localStorage.getItem('inventory')!)?.includes(
+                book._id
+              )
           )
         : [];
   }

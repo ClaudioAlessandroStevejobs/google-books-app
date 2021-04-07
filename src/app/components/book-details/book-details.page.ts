@@ -1,6 +1,9 @@
+import { Review } from 'src/app/interfaces/review';
+import { ReaderService } from 'src/app/services/reader.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/interfaces/book';
+import { Reader } from 'src/app/interfaces/reader';
 import { BooksService } from 'src/app/services/books.service';
 @Component({
   selector: 'app-book-details',
@@ -9,22 +12,28 @@ import { BooksService } from 'src/app/services/books.service';
 })
 export class BookDetailsPage implements OnInit {
   book: Book;
+  reader: Reader;
+  buttonVisibility: boolean = true;
   constructor(
     private activatedroute: ActivatedRoute,
     private booksService: BooksService,
+    private readerService: ReaderService,
     private router: Router
   ) {}
 
-  ngOnInit() {
-    console.log('sì');
+  async ngOnInit() {
+    this.ionViewWillEnter();
+  }
+
+  async ionViewWillEnter() {
     try {
       this.activatedroute.paramMap.subscribe(async (params) => {
         const [book] = await this.booksService.getBooksByIds([
           params.get('id')!,
         ]);
         this.book = book;
-        console.log(book);
       });
+      this.buttonVisibility = await this.isAddable();
     } catch (error) {
       throw new Error(error);
     }
@@ -36,6 +45,16 @@ export class BookDetailsPage implements OnInit {
     ) as string[];
     inventory.push(this.book?._id!);
     localStorage.setItem('inventory', JSON.stringify(inventory));
-    this.router.navigate(['/books']);
+    this.router.navigate(['/search']);
+  };
+
+  isAddable = async (): Promise<boolean> => {
+    if (localStorage.getItem('token')) {
+      this.reader = await this.readerService.getReader();
+    }
+    return (
+      !this.reader?._booksIds.includes(this.book._id) &&
+      !JSON.parse(localStorage.getItem('inventory')!)?.includes(this.book._id)
+    );
   };
 }

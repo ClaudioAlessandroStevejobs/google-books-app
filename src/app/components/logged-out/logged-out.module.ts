@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { LoggedOutPageRoutingModule } from './logged-out-routing.module';
 
 import { LoggedOutPage } from './logged-out.page';
+import { HeaderModule } from '../header/header.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoggedOutPageRoutingModule
+    LoggedOutPageRoutingModule,
+    HeaderModule,
   ],
-  declarations: [LoggedOutPage]
+  declarations: [LoggedOutPage],
 })
 export class LoggedOutPageModule {}

@@ -8,6 +8,7 @@ import { CartPageRoutingModule } from './cart-routing.module';
 
 import { CartPage } from './cart.page';
 import { BookItemModule } from '../book-item/book-item.module';
+import { HeaderModule } from '../header/header.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { BookItemModule } from '../book-item/book-item.module';
     IonicModule,
     CartPageRoutingModule,
     BookItemModule,
+    HeaderModule,
   ],
   declarations: [CartPage],
 })

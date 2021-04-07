@@ -1,4 +1,4 @@
-<ion-card *ngIf="isCard" button="true">
+<ion-card *ngIf="isCard" button="true" (click)="redirectToDetails()">
   <ion-card-header>
     <ion-img src="../../assets/exampleImg.jpg" alt=""></ion-img>
   </ion-card-header>
@@ -19,6 +19,4 @@
     <ion-card-title>{{title}}</ion-card-title>
     <ion-card-subtitle>{{price}}$</ion-card-subtitle>
   </div>
-
-
 </ion-item>

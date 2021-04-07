@@ -1,3 +1,5 @@
+import { Review } from './review';
+
 export interface Book {
   _img: string;
   _title: string;
@@ -8,4 +10,5 @@ export interface Book {
   _editors: string[];
   _id: string;
   _launchDate: string;
+  _reviews: Review[];
 }
