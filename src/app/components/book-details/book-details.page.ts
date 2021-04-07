@@ -1,6 +1,6 @@
 import { Review } from 'src/app/interfaces/review';
 import { ReaderService } from 'src/app/services/reader.service';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/interfaces/book';
 import { Reader } from 'src/app/interfaces/reader';
@@ -12,10 +12,9 @@ import { WriterService } from 'src/app/services/writer.service';
   templateUrl: './book-details.page.html',
   styleUrls: ['./book-details.page.scss'],
 })
-export class BookDetailsPage implements OnInit {
+export class BookDetailsPage {
   book: Book;
   user: Reader | Writer;
-  buttonVisibility: boolean = true;
   constructor(
     private activatedroute: ActivatedRoute,
     private booksService: BooksService,
@@ -24,11 +23,7 @@ export class BookDetailsPage implements OnInit {
     private router: Router
   ) {}
 
-  async ngOnInit() {
-    this.ionViewWillEnter();
-  }
-
-  async ionViewWillEnter() {
+  ngOnInit() {
     try {
       this.activatedroute.paramMap.subscribe(async (params) => {
         const [book] = await this.booksService.getBooksByIds([
@@ -36,7 +31,6 @@ export class BookDetailsPage implements OnInit {
         ]);
         this.book = book;
       });
-      this.buttonVisibility = await this.isAddable();
     } catch (error) {
       throw new Error(error);
     }
@@ -51,16 +45,22 @@ export class BookDetailsPage implements OnInit {
     this.router.navigate(['/search']);
   };
 
-  isAddable = async (): Promise<boolean> => {
+  isAddable = () => {
     if (localStorage.getItem('token')) {
       ({
-        WRITER: async () => { this.user =  await this.writerService.getWriter()},
-        READER: async () => { this.user =  await this.readerService.getReader()}
-      }[localStorage.getItem('role')])();
+        WRITER: async () => {
+          this.user = await this.writerService.getWriter();
+        },
+        READER: async () => {
+          this.user = await this.readerService.getReader();
+        },
+      }[localStorage.getItem('role')]());
+      return (
+        localStorage.getItem['token'] &&
+        !this.user?._booksIds.includes(this.book._id) &&
+        !JSON.parse(localStorage.getItem('inventory')!).includes(this.book._id)
+      );
     }
-    return (
-      !this.user?._booksIds.includes(this.book._id) &&
-      !JSON.parse(localStorage.getItem('inventory')!)?.includes(this.book._id)
-    );
+    return false;
   };
 }

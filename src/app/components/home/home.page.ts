@@ -8,21 +8,26 @@ import { BooksService } from '../../services/books.service';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage{
+export class HomePage {
   constructor(private booksService: BooksService) {}
   newBooks: Book[] = [];
   bestBooks: Book[] = [];
-  async ngOnInit () {
+  async ionViewWillEnter() {
     try {
       const books = await this.booksService.getBooks();
-      this.newBooks = books.map(b => b).sort((bookA: Book, bookB: Book) =>
-        moment(bookA._launchDate, 'DD/MM/YYYY').unix() 
-          - moment(bookB._launchDate, 'DD/MM/YYYY').unix()
-      )
-      this.bestBooks = books.map(b => b).sort((bookA: Book, bookB: Book) => 
-        bookA._soldCopies - bookB._soldCopies
-      )
-    } catch ({err}) {
+      this.newBooks = books
+        .map((b) => b)
+        .sort(
+          (bookA: Book, bookB: Book) =>
+            moment(bookA._launchDate, 'DD/MM/YYYY').unix() -
+            moment(bookB._launchDate, 'DD/MM/YYYY').unix()
+        );
+      this.bestBooks = books
+        .map((b) => b)
+        .sort(
+          (bookA: Book, bookB: Book) => bookA._soldCopies - bookB._soldCopies
+        );
+    } catch ({ err }) {
       alert(err);
     }
   }

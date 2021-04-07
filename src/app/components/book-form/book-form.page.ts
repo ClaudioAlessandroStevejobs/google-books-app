@@ -37,8 +37,13 @@ export class BookFormPage implements OnInit {
         this.bookForm.value.editor,
         this.bookForm.value.imageURL
       );
-
-      this.router.navigate['/books'];
+      this.bookForm.controls['title'].setValue('');
+      this.bookForm.controls['price'].setValue('');
+      this.bookForm.controls['genre'].setValue('');
+      this.bookForm.controls['description'].setValue('');
+      this.bookForm.controls['editor'].setValue('');
+      this.bookForm.controls['imageURL'].setValue('');
+      this.router.navigate(['/books']);
     } catch (err) {
       throw new Error(err);
     }

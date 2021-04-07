@@ -17,6 +17,10 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'books/details/:id',
+        component: BookDetailsPage,
+      },
+      {
         path: 'home',
         loadChildren: () =>
           import('../home/home.module').then((m) => m.HomePageModule),
@@ -52,10 +56,7 @@ const routes: Routes = [
             (m) => m.LoggedOutPageModule
           ),
       },
-      {
-        path: 'books/:id',
-        component: BookDetailsPage,
-      },
+
       {
         path: 'insights',
         loadChildren: () =>

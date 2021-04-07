@@ -6,9 +6,17 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { BookDetailsPage } from './book-details.page';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, HeaderModule],
+  exports: [BookDetailsPage],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    HeaderModule,
+    BrowserModule,
+  ],
   declarations: [BookDetailsPage],
 })
 export class BookDetailsPageModule {}
