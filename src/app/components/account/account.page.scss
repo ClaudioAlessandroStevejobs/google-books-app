@@ -1,13 +1,20 @@
-.avatar{
-    margin: auto;
-    }
-
-.card{
-   height: 50%;
-   text-overflow: ellipsis;
+.avatar {
+  margin: auto;
 }
 
-.cardAvatar{
-    border-radius: 0;
-   
- }
+.card {
+  height: 50%;
+  text-overflow: ellipsis;
+}
+
+.cardAvatar {
+  border-radius: 0;
+}
+
+.bgcolor {
+  background: #cdcfd6;
+}
+
+ion-col {
+  border: 0px solid #aeb7ca;
+}

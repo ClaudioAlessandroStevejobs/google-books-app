@@ -1,47 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-
 @Component({
   selector: 'app-account',
   templateUrl: './account.page.html',
   styleUrls: ['./account.page.scss'],
 })
 export class AccountPage implements OnInit {
-  name: string = "Roberta";
-  surname: string = "Corallo";
-  email: string = "roxycrl92@gmail.com";
-  nationality: string = "Italiana";
-  public items = [
-    { 
-      img: "https://shopping.riza.it/media/catalog/product/cache/image/700x560/e9c3970ab036de70892d86c6d221abfe/s/o/socksoushmindecuregi_2.jpg",    
-      title: "I miracolosi rimedi della nonna",
-      author: "Riza",
+  name: string = 'Roberta';
+  surname: string = 'Corallo';
+  email: string = 'roxycrl92@gmail.com';
+  nationality: string = 'Italiana';
+  money: number = 50;
+
+  public data = [
+    {
+      field1: 'test1',
+      field2: 'test2',
     },
-    { 
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLOgS1tPK1ZvwtKAnO5F5n1AmF_sdrLkigkDKYjsnsLtOhQjVnWRf7xnYAg&usqp=CAc",    
-      title: "Le Indagini del Sergente MacRae",
-      author: "Stuart McBride",
+    {
+      field1: 'test1',
+      field2: 'test2',
     },
-    { 
-      img: "https://shopping.riza.it/media/catalog/product/cache/image/700x560/e9c3970ab036de70892d86c6d221abfe/s/o/socksoushmindecuregi_2.jpg",    
-      title: "I miracolosi rimedi della nonna",
-      author: "Riza",
+    {
+      field1: 'test1',
+      field2: 'test2',
     },
-    { 
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLOgS1tPK1ZvwtKAnO5F5n1AmF_sdrLkigkDKYjsnsLtOhQjVnWRf7xnYAg&usqp=CAc",    
-      title: "Le Indagini del Sergente MacRae",
-      author: "Stuart McBride",
+    {
+      field1: 'test1',
+      field2: 'test2',
     },
-    { 
-      img: "https://shopping.riza.it/media/catalog/product/cache/image/700x560/e9c3970ab036de70892d86c6d221abfe/s/o/socksoushmindecuregi_2.jpg",    
-      title: "I miracolosi rimedi della nonna",
-      author: "Riza",
-    },
-    { 
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLOgS1tPK1ZvwtKAnO5F5n1AmF_sdrLkigkDKYjsnsLtOhQjVnWRf7xnYAg&usqp=CAc",    
-      title: "Le Indagini del Sergente MacRae",
-      author: "Stuart McBride",
+    {
+      field1: 'test1',
+      field2: 'test2',
     },
   ];
 
