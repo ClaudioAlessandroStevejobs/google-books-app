@@ -18,10 +18,9 @@ export class BooksService {
   ): Promise<Book[]> => {
     try {
       const books = await this.getBooks();
-      const filtered = books.filter((book) =>
+      return books.filter((book) =>
         exclude ? !booksIds.includes(book._id) : booksIds.includes(book._id)
       );
-      return filtered;
     } catch (err) {
       throw new Error(err);
     }

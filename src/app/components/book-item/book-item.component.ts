@@ -21,13 +21,13 @@ export class BookItemComponent implements OnInit {
   ngOnInit() {
     this.title = this.book._title;
     this.price = this.book._price;
+    this.img = this.book._img;
     this.booksService
       .getAuthorName(this.book._author)
       .then((res) => (this.author = res));
-    // console.log(this.title)
   }
 
   redirectToDetails = () => {
-    this.router.navigate([`books/details/${this.book._id}`]);
+    this.router.navigate([`books/${this.book._id}`]);
   };
 }

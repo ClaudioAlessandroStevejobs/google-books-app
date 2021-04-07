@@ -38,6 +38,7 @@ export class BooksPage {
           (await this.readerService.getReader())._booksIds,
           false
         );
+        console.log(this.myBooks);
       },
     }[localStorage.getItem('role')]());
   }
