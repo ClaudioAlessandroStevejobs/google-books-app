@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/interfaces/book';
 import { Reader } from 'src/app/interfaces/reader';
 import { BooksService } from 'src/app/services/books.service';
+import { Writer } from 'src/app/interfaces/writer';
+import { WriterService } from 'src/app/services/writer.service';
 @Component({
   selector: 'app-book-details',
   templateUrl: './book-details.page.html',
@@ -12,12 +14,13 @@ import { BooksService } from 'src/app/services/books.service';
 })
 export class BookDetailsPage implements OnInit {
   book: Book;
-  reader: Reader;
+  user: Reader | Writer;
   buttonVisibility: boolean = true;
   constructor(
     private activatedroute: ActivatedRoute,
     private booksService: BooksService,
     private readerService: ReaderService,
+    private writerService: WriterService,
     private router: Router
   ) {}
 
@@ -50,10 +53,13 @@ export class BookDetailsPage implements OnInit {
 
   isAddable = async (): Promise<boolean> => {
     if (localStorage.getItem('token')) {
-      this.reader = await this.readerService.getReader();
+      ({
+        WRITER: async () => { this.user =  await this.writerService.getWriter()},
+        READER: async () => { this.user =  await this.readerService.getReader()}
+      }[localStorage.getItem('role')])();
     }
     return (
-      !this.reader?._booksIds.includes(this.book._id) &&
+      !this.user?._booksIds.includes(this.book._id) &&
       !JSON.parse(localStorage.getItem('inventory')!)?.includes(this.book._id)
     );
   };
