@@ -1,6 +1,7 @@
 <app-header tabName="Search"></app-header>
 
 <ion-content>
+  <!-- <ion-title [disabled] = "1+1 == 2">LEZZO</ion-title> -->
   <ion-grid fixed="true">
     <ion-row>
       <ion-col>
@@ -9,7 +10,7 @@
           <ion-title> {{book._author}} </ion-title>
           <ion-card-content>
             <ion-title> {{book._description}} </ion-title>
-            <ion-button *ngIf="buttonVisibility" (click)="addToCart()" shape="round" color="success">
+            <ion-button [disabled]='!isAddable()' (click)="addToCart()" shape="round" color="success">
               {{book._price }}
               <ion-icon name="cart-outline"> </ion-icon>
             </ion-button>

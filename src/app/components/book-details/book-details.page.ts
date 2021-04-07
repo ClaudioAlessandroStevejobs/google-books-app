@@ -29,10 +29,11 @@ export class BookDetailsPage implements OnInit {
   }
 
   async ionViewWillEnter() {
+    
     try {
       this.activatedroute.paramMap.subscribe(async (params) => {
         const [book] = await this.booksService.getBooksByIds([
-          params.get('id')!,
+          params.get('id'),
         ]);
         this.book = book;
       });
@@ -51,7 +52,7 @@ export class BookDetailsPage implements OnInit {
     this.router.navigate(['/search']);
   };
 
-  isAddable = async (): Promise<boolean> => {
+  isAddable = (): boolean => {
     if (localStorage.getItem('token')) {
       ({
         WRITER: async () => { this.user =  await this.writerService.getWriter()},
@@ -59,6 +60,7 @@ export class BookDetailsPage implements OnInit {
       }[localStorage.getItem('role')])();
     }
     return (
+      localStorage.getItem('token') &&
       !this.user?._booksIds.includes(this.book._id) &&
       !JSON.parse(localStorage.getItem('inventory')!)?.includes(this.book._id)
     );

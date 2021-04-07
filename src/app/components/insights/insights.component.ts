@@ -11,8 +11,7 @@ import { Chart } from 'chart.js';
 })
 export class InsightsComponent implements OnInit {
 
-  constructor(private writerService: WriterService, 
-    private booksService: BooksService) { 
+  constructor(private writerService: WriterService, private booksService: BooksService) { 
       // this.canvasHeight = `${(this.myBooks.length -1)*30}px`
     }
   @ViewChild('barCanvas') barCanvas: ElementRef;
@@ -32,25 +31,15 @@ export class InsightsComponent implements OnInit {
     this.createBarChart()
   }
 
-
-
   createBarChart () {
-    // this.engine
-    // this.barCanvas.nativeElement.getContext('2d').height = 400
     this.barChart = new Chart(this.barCanvas.nativeElement, {
       type : 'horizontalBar',
       data: {
-        // labels: [...this.myBooks.map(({_title}) => _title),...this.myBooks.map(({_title}) => _title)],
-        // labels: [this.myBooks.map(({_title}) => _title)[0]],
         labels: this.myBooks.map(({_title}) => _title),
         datasets: [
           {
             label: "Sold Copied: ",
-            // barPercentage: 0.4,
             maxBarThickness: 60,
-            // barThickness: 50,
-            // data: [...this.myBooks.map(({_soldCopies}) => _soldCopies),...this.myBooks.map(({_soldCopies}) => _soldCopies)],
-            // data: [this.myBooks.map(({_soldCopies})=> _soldCopies)[0]],
             data: this.myBooks.map(({_soldCopies})=> _soldCopies),
             backgroundColor: [
               "rgba(255, 99, 132, 0.2)",
@@ -77,12 +66,8 @@ export class InsightsComponent implements OnInit {
           display: false
         },
         responsive: true,
-        
-        // aspectRatio: 0.8,
         maintainAspectRatio: false,
         scales: {
-          
-          // yAxes: [{ ticks: { beginAtZero: true}}],
           xAxes: [{ticks: { beginAtZero: true}}],
           yAxes: [{ticks: { display: true }}]
         }

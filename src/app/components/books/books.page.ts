@@ -28,14 +28,17 @@ export class BooksPage {
     }
     ({
       WRITER: async () => {
+        const booksIds = (await this.writerService.getWriter())._booksIds
         this.myBooks = await this.booksService.getBooksByIds(
-          (await this.writerService.getWriter())._booksIds
+          booksIds
         );
+        console.log("in", booksIds)
       },
       READER: async () => {
         this.myBooks = await this.booksService.getBooksByIds(
           (await this.readerService.getReader())._booksIds
         );
+        console.log(this.myBooks)
       },
     }[localStorage.getItem('role')]());
     console.log(this.myBooks);

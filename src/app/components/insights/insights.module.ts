@@ -4,6 +4,7 @@ import { InsightsComponent } from './insights.component';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { InsightsRoutingModule } from '../insights/insights-routing.module';
+import { HeaderModule } from '../header/header.module';
 
 
 
@@ -13,7 +14,8 @@ import { InsightsRoutingModule } from '../insights/insights-routing.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    InsightsRoutingModule
+    InsightsRoutingModule,
+    HeaderModule,
   ]
 })
 export class InsightsModule { }
