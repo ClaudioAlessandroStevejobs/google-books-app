@@ -15,7 +15,10 @@ export class AccountPage implements OnInit {
 
   constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.email = localStorage.getItem('id')
+    this.nationality = localStorage.getItem('token')
+  }
 
   ionViewDidEnter() {
     if (!localStorage.getItem('role')) {

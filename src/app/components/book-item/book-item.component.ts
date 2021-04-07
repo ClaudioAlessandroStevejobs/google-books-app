@@ -15,6 +15,7 @@ export class BookItemComponent implements OnInit {
   author: string;
   @Input() book: Book;
   @Input() isCard: boolean;
+  @Input() inLibrary: boolean = false;
   constructor(private booksService: BooksService, private router: Router) {}
 
   ngOnInit() {

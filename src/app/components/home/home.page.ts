@@ -15,17 +15,13 @@ export class HomePage{
   async ngOnInit () {
     try {
       const books = await this.booksService.getBooks();
-      console.log('books: ', books)
       this.newBooks = books.map(b => b).sort((bookA: Book, bookB: Book) =>
         moment(bookA._launchDate, 'DD/MM/YYYY').unix() 
           - moment(bookB._launchDate, 'DD/MM/YYYY').unix()
       )
-      console.log('new: ', this.newBooks)
       this.bestBooks = books.map(b => b).sort((bookA: Book, bookB: Book) => 
         bookA._soldCopies - bookB._soldCopies
       )
-      
-      console.log('best: ', this.bestBooks)
     } catch ({err}) {
       alert(err);
     }

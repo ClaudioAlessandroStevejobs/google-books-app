@@ -53,6 +53,17 @@ const routes: Routes = [
           ),
       },
       {
+<<<<<<< HEAD
+=======
+        path: 'books/:id',
+        component: BookDetailsPage,
+      },
+      {
+        path: 'insights',
+        loadChildren: () => import('../insights/insights.module').then((m) => m.InsightsModule)
+      },
+      {
+>>>>>>> 3e0e1814b57cc6e2d6d5ff69f5d327efc16de345
         path: '',
         redirectTo: '/home',
         pathMatch: 'full',
