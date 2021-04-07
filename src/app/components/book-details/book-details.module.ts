@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
@@ -7,13 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { BookDetailsPage } from './book-details.page';
 
 @NgModule({
-  exports:[BookDetailsPage],
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-  
-  ],
-  declarations: [BookDetailsPage]
+  imports: [FormsModule, IonicModule, CommonModule],
+  declarations: [BookDetailsPage],
 })
 export class BookDetailsPageModule {}

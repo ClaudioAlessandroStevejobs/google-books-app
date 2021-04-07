@@ -19,7 +19,11 @@ export class BooksPage implements OnInit {
   user: Reader | Writer;
   myBooks: Book[];
   async ngOnInit() {
-    this.myBooks = await this.booksService.getBooksByIds((await this.readerService.getReader())._booksIds)
+    console.log(localStorage.getItem('role'));
+    ({
+      WRITER: async () => { this.myBooks =  await this.booksService.getBooksByIds((await this.writerService.getWriter())._booksIds)},
+      READER: async () => { this.myBooks =  await this.booksService.getBooksByIds((await this.readerService.getReader())._booksIds)}
+    }[localStorage.getItem('role')])();
   }
 
   ionViewDidEnter() {

@@ -8,46 +8,17 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./account.page.scss'],
 })
 export class AccountPage implements OnInit {
-  name: string = "Roberta";
-  surname: string = "Corallo";
-  email: string = "roxycrl92@gmail.com";
-  nationality: string = "Italiana";
-  public items = [
-    { 
-      img: "https://shopping.riza.it/media/catalog/product/cache/image/700x560/e9c3970ab036de70892d86c6d221abfe/s/o/socksoushmindecuregi_2.jpg",    
-      title: "I miracolosi rimedi della nonna",
-      author: "Riza",
-    },
-    { 
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLOgS1tPK1ZvwtKAnO5F5n1AmF_sdrLkigkDKYjsnsLtOhQjVnWRf7xnYAg&usqp=CAc",    
-      title: "Le Indagini del Sergente MacRae",
-      author: "Stuart McBride",
-    },
-    { 
-      img: "https://shopping.riza.it/media/catalog/product/cache/image/700x560/e9c3970ab036de70892d86c6d221abfe/s/o/socksoushmindecuregi_2.jpg",    
-      title: "I miracolosi rimedi della nonna",
-      author: "Riza",
-    },
-    { 
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLOgS1tPK1ZvwtKAnO5F5n1AmF_sdrLkigkDKYjsnsLtOhQjVnWRf7xnYAg&usqp=CAc",    
-      title: "Le Indagini del Sergente MacRae",
-      author: "Stuart McBride",
-    },
-    { 
-      img: "https://shopping.riza.it/media/catalog/product/cache/image/700x560/e9c3970ab036de70892d86c6d221abfe/s/o/socksoushmindecuregi_2.jpg",    
-      title: "I miracolosi rimedi della nonna",
-      author: "Riza",
-    },
-    { 
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLOgS1tPK1ZvwtKAnO5F5n1AmF_sdrLkigkDKYjsnsLtOhQjVnWRf7xnYAg&usqp=CAc",    
-      title: "Le Indagini del Sergente MacRae",
-      author: "Stuart McBride",
-    },
-  ];
+  name: string = 'Roberta';
+  surname: string = 'Corallo';
+  email: string = 'roxycrl92@gmail.com';
+  nationality: string = 'Italiana';
 
   constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.email = localStorage.getItem('id')
+    this.nationality = localStorage.getItem('token')
+  }
 
   ionViewDidEnter() {
     if (!localStorage.getItem('role')) {

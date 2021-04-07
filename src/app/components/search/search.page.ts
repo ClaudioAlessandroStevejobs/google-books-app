@@ -38,7 +38,7 @@ export class SearchPage implements OnInit, OnChanges {
             (book) =>
               book._author.includes(this.search) ||
               book._title.includes(this.search) ||
-              book._price == this.search
+              String(book._price) == this.search
           )
         : [];
   }

@@ -1,23 +1,33 @@
-<ion-content>
-  <ion-grid fixed="true">
+<ion-header>
+  <ion-toolbar>
     <ion-row>
       <ion-col>
-        <ion-item class="divider-medium" lines="none">
-        </ion-item>
+        <ion-img src="./../../../assets/images/g.png" class="logo"></ion-img>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <ion-title class="ion-text-center">Cart</ion-title>
       </ion-col>
     </ion-row>
-    <ion-row>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid fixed="true">
+
+    <ion-row *ngFor="let book of books">
       <ion-col>
-        <ion-card>
-          <ion-card-content>
-            <ion-row>
-              <ion-col>
-                <ion-icon name="cart-outline"></ion-icon>
-              </ion-col>
-            </ion-row>
-          </ion-card-content>
-        </ion-card>
+        <app-book-item style="width: 90%" [isCard]='false' [book]="book">
+        </app-book-item>
+        <ion-button color="danger" shape="round" (click)="deleteFromInventory(book._id)"> Delete
+        </ion-button>
       </ion-col>
+
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<ion-button color="danger" shape="round" (click)="buy()"> Buy
+</ion-button>

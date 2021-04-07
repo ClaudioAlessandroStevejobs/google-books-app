@@ -1,7 +1,7 @@
 export interface Book {
   _img: string;
   _title: string;
-  _price: string;
+  _price: number;
   _author: string;
   _description: string;
   _soldCopies: number;

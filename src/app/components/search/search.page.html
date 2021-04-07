@@ -1,31 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <ion-img src="./../../../assets/images/g.png" class="logo"></ion-img>
+      </ion-col>
+      <ion-col>
+      </ion-col>
+      <ion-col>
+        <ion-title class="ion-text-center">Search</ion-title>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+
+
 <ion-content>
-
-
-
   <ion-grid fixed="true">
-
-
     <ion-row>
       <ion-col>
         <ion-card>
           <ion-card-header>
-            <ion-searchbar placeholder="What inspires you?" mode="ios" inputmode="search"
-              [(ngModel)]="search" (ionChange)="ngOnChanges()">
+            <ion-searchbar placeholder="What inspires you?" mode="ios" inputmode="search" [(ngModel)]="search"
+              (ionChange)="ngOnChanges()" autofocus>
             </ion-searchbar>
           </ion-card-header>
         </ion-card>
       </ion-col>
     </ion-row>
 
-    <ion-row *ngFor="let book of searchedBooks" >
+    <ion-row *ngFor="let book of searchedBooks">
       <ion-col>
-        <app-book-item style="width: 90%" [isCard] = 'false' [book]="book"></app-book-item>
+        <app-book-item style="width: 90%" [isCard]='false' [book]="book"></app-book-item>
       </ion-col>
-      
+
     </ion-row>
   </ion-grid>
 
 
 </ion-content>
-
-<!-- lista robe che volta per volta riempiono un array chiedendo con l'api se ci sono quei libri -->

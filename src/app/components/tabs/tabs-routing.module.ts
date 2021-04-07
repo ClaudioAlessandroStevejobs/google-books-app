@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BookDetailsPageModule } from '../book-details/book-details.module';
+import { BookDetailsPage } from '../book-details/book-details.page';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
@@ -10,9 +12,9 @@ const routes: Routes = [
       {
         path: 'auth',
         loadChildren: () =>
-          import(
-            '../auth/auth-container/auth-container.module'
-          ).then((m) => m.AuthContainerPageModule),
+          import('../auth/auth-container/auth-container.module').then(
+            (m) => m.AuthContainerPageModule
+          ),
       },
       {
         path: 'home',
@@ -20,32 +22,25 @@ const routes: Routes = [
           import('../home/home.module').then((m) => m.HomePageModule),
       },
       {
-        path: 'account',
-        loadChildren: () =>
-          import('../account/account.module').then(
-            (m) => m.AccountPageModule
-          ),
-      },
-      {
         path: 'books',
         loadChildren: () =>
-          import('../books/books.module').then(
-            (m) => m.BooksPageModule
-          ),
+          import('../books/books.module').then((m) => m.BooksPageModule),
       },
+      {
+        path: 'account',
+        loadChildren: () =>
+          import('../account/account.module').then((m) => m.AccountPageModule),
+      },
+
       {
         path: 'cart',
         loadChildren: () =>
-          import('../cart/cart.module').then(
-            (m) => m.CartPageModule
-          ),
+          import('../cart/cart.module').then((m) => m.CartPageModule),
       },
       {
         path: 'search',
         loadChildren: () =>
-          import('../search/search.module').then(
-            (m) => m.SearchPageModule
-          ),
+          import('../search/search.module').then((m) => m.SearchPageModule),
       },
       {
         path: 'logged-out',
@@ -53,6 +48,14 @@ const routes: Routes = [
           import('../logged-out/logged-out.module').then(
             (m) => m.LoggedOutPageModule
           ),
+      },
+      {
+        path: 'books/:id',
+        component: BookDetailsPage,
+      },
+      {
+        path: 'insights',
+        loadChildren: () => import('../insights/insights.module').then((m) => m.InsightsModule)
       },
       {
         path: '',
