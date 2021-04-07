@@ -1,3 +1,9 @@
 <ion-content>
-  <h1>books personali</h1>
+
+  <ion-row>
+    <ion-col *ngFor='let book of myBooks'>
+      <app-book-item [inLibrary]='true' [isCard]='true' [book]='book' style="width: 90%"></app-book-item>
+    </ion-col>
+  </ion-row>
+
 </ion-content>
