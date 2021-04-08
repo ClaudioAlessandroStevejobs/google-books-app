@@ -21,12 +21,13 @@ export class InsightsComponent {
   myBooks: Book[];
   divHeight: any;
 
-  async ionViewWillEnter() {;
+  async ionViewWillEnter() {
+    console.log(this.barCanvas);
     this.writer = await this.writerService.getWriter();
     this.fund = this.writer._fund;
     this.myBooks = await this.booksService.getBooksByIds(this.writer._booksIds);
     this.divHeight = {
-      height: `${this.myBooks.length * 120}px`,
+      height: `${this.myBooks.filter(({_soldCopies}) => _soldCopies > 0).length * 120}px`,
     };
     this.createBarChart();
   }
@@ -35,12 +36,12 @@ export class InsightsComponent {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
       type: 'horizontalBar',
       data: {
-        labels: this.myBooks.map(({ _title }) => _title),
+        labels: this.myBooks.filter(({_soldCopies}) => _soldCopies > 0).map(({ _title }) => _title),
         datasets: [
           {
             label: 'Sold Copied: ',
             maxBarThickness: 60,
-            data: this.myBooks.map(({ _soldCopies }) => _soldCopies),
+            data: this.myBooks.filter(({_soldCopies}) => _soldCopies > 0).map(({ _soldCopies }) => _soldCopies),
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -68,8 +69,8 @@ export class InsightsComponent {
         responsive: true,
         maintainAspectRatio: false,
         scales: {
-          xAxes: [{ ticks: { beginAtZero: true } }],
-          yAxes: [{ ticks: { display: true } }],
+          xAxes: [{ ticks: { beginAtZero: true, stepSize: 1 }}],
+          yAxes: [{ ticks: { display: true } , display: false }],
         },
       },
     });

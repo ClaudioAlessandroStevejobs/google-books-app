@@ -1,12 +1,30 @@
 <app-header tabName="Library"></app-header>
 <ion-content>
   <ion-item class="divider-medium"></ion-item>
-  <ion-title class="ion-text-center">Your current income is {{fund}} €</ion-title>
+
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <ion-card-header>
+          <ion-title class="ion-text-center">Your current income is {{fund}} €</ion-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
   <ion-item class="divider-medium"></ion-item>
-  <ion-title color="medium">Books Copies</ion-title>
-  <ion-item class="divider-tiny"></ion-item>
-  <div [ngStyle]='divHeight'>
+  <ion-title *ngIf="fund > 1" color="medium">Books Copies</ion-title>
+  <div *ngIf="fund > 1" [ngStyle]='divHeight'>
     <canvas #barCanvas></canvas>
   </div>
+  <ion-item class="divider-tiny"></ion-item>
+  <ion-item *ngIf="fund < 1" class="divider-medium"></ion-item>
+  <ion-item *ngIf="fund < 1" class="divider-medium"></ion-item>
+  <ion-row *ngIf="fund < 1">
+    <ion-col>
+      <ion-img src="../../../assets/images/chart.svg" class="box box-img"></ion-img>
+    </ion-col>
+  </ion-row>
+
 
 </ion-content>

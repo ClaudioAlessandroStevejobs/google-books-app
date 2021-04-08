@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Reader } from 'src/app/interfaces/reader';
@@ -14,6 +14,7 @@ import { toast } from 'src/app/utilities/toast';
 })
 export class AccountPage implements OnInit {
   updatedFund: number;
+  @ViewChild('avatarCanvas') avatarCanvas: ElementRef;
   user: Reader | Writer = {
     _email: '',
     _password: '',
@@ -36,7 +37,9 @@ export class AccountPage implements OnInit {
     private readerService: ReaderService,
     private formBuilder: FormBuilder
   ) {}
-
+  
+  _CANVAS: any;
+  _CONTEXT: any;
   ngOnInit() {
     if (localStorage.getItem('token')) {
       ({
@@ -52,7 +55,26 @@ export class AccountPage implements OnInit {
     }
   }
 
+  drawCanv() {
+    this._CANVAS = this.avatarCanvas.nativeElement;
+    this._CANVAS.width = 60;
+    this._CANVAS.height = 60;
+    this._CONTEXT = this._CANVAS.getContext("2d");
+    this._CONTEXT.beginPath();
+    this._CONTEXT.fillStyle = "#3880ff";
+    this._CONTEXT.strokeStyle = "black";
+    this._CONTEXT.font = "35px Arial";
+    this._CONTEXT.lineWidth = 2;
+    this._CONTEXT.arc(this._CANVAS.width/2, this._CANVAS.height/2, 30, 0, 2 * Math.PI);
+    this._CONTEXT.fill();
+    this._CONTEXT.beginPath();
+    this._CONTEXT.fillStyle = "white";
+    this._CONTEXT.fillText(this.user._email.charAt(0).toUpperCase(), 19, 43);
+    this._CONTEXT.fill();
+  }
+
   ionViewDidEnter() {
+    this.drawCanv()
     !localStorage.getItem('role') &&
       this.router.navigate(['logged-out'])
   }
