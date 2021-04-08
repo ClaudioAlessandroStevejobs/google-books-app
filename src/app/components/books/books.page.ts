@@ -21,7 +21,7 @@ export class BooksPage {
     private booksService: BooksService
   ) {}
   user: Reader | Writer;
-  myBooks: Book[];
+  myBooks: Book[] = [];
   ionViewWillEnter() {
     if (!localStorage.getItem('role')) {
       this.router.navigate(['logged-out']);
@@ -29,15 +29,16 @@ export class BooksPage {
     ({
       WRITER: async () => {
         this.myBooks = await this.booksService.getBooksByIds(
-          (await this.writerService.getWriter())._booksIds
+          (await this.writerService.getWriter())._booksIds,
+          false
         );
       },
       READER: async () => {
         this.myBooks = await this.booksService.getBooksByIds(
-          (await this.readerService.getReader())._booksIds
+          (await this.readerService.getReader())._booksIds,
+          false
         );
       },
     }[localStorage.getItem('role')]());
-    console.log(this.myBooks);
   }
 }

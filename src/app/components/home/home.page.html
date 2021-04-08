@@ -1,8 +1,8 @@
 <app-header tabName="Home"></app-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <ion-card-content>
-    <ion-title>News</ion-title>
+    <ion-title>New releases</ion-title>
     <ion-slides [options]="{ slidesPerView: '2', zoom: false, grabCursor: true }">
       <ion-slide *ngFor="let book of newBooks">
         <app-book-item [isCard]='true' [book]='book'></app-book-item>
@@ -10,7 +10,7 @@
     </ion-slides>
   </ion-card-content>
   <ion-card-content>
-    <ion-title>Best Seller</ion-title>
+    <ion-title>Best sellers</ion-title>
     <ion-slides [options]="{ slidesPerView: '2', zoom: false, grabCursor: true }">
       <ion-slide *ngFor="let book of bestBooks">
         <app-book-item [isCard]='true' [book]='book'></app-book-item>

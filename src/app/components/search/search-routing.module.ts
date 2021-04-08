@@ -9,10 +9,6 @@ const routes: Routes = [
     path: '',
     component: SearchPage,
   },
-  {
-    path: 'books/:id',
-    component: BookDetailsPage,
-  },
 ];
 
 @NgModule({

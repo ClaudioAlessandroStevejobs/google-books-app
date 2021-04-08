@@ -4,37 +4,47 @@
   <ion-grid fixed="true">
     <ion-row>
       <ion-col>
+        <img src="https://m.media-amazon.com/images/M/MV5BOTQwZmQyYzEtODk5ZC00OTY3LWExMjAtYzRjNWFhNGM3MzBlXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UY1200_CR90,0,630,1200_AL_.jpg">
+          <ion-img [src]="" class="img"></ion-img>
+        </ion-col>
+        <ion-col>
+          <div>
+          <ion-text style="color: black; text-align: center;"> {{book._title}}
+          </ion-text> 
+          <br><br>
+          <ion-text style="text-align: center;" > {{book._author}} </ion-text>
+          <br><br>
+          <ion-text style="text-align: center;" > Genere: {{book._genre}} </ion-text>
+          <br><br>
+          <ion-text> {{book._launchDate}} </ion-text>
+       
+      <pre></pre>
+      <ion-button shape="round" color="warning">
+       {{book._price}}
+        <ion-icon name="cart-outline"> </ion-icon>
+      </ion-button>
+    
+    </div>
+    </ion-col>
+ </ion-row>
+      <ion-card-content>
+      <ion-text style=" color: rgb(72, 72, 72);"> {{book._description}} "ciao" </ion-text>
+    </ion-card-content>
         <ion-card>
+          <ion-img src='{{book._img}}'></ion-img>
           <ion-title> {{book._title}} </ion-title>
-          <ion-title> {{book._author}} </ion-title>
+          <ion-title> {{author}} </ion-title>
           <ion-card-content>
             <ion-title> {{book._description}} </ion-title>
-            <ion-button *ngIf="buttonVisibility" (click)="addToCart()" shape="round" color="success">
+            <ion-button [disabled]='!isAddable()' (click)="addToCart()" shape="round" color="success">
               {{book._price }}
-              <ion-icon name="cart-outline"> </ion-icon>
+              <ion-icon name="cart-outline"></ion-icon>
             </ion-button>
           </ion-card-content>
         </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-  <ion-grid fixed="true">
-    <ion-row>
-      <ion-col *ngFor="let review of book._reviews">
-        <ion-card>
-          <ion-avatar class="avatar">
-            <img
-              src="data:image/png;base64,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" />
-          </ion-avatar>
-          <ion-card-title>{{review.title}}</ion-card-title>
-          <ion-title> {{review.rId}} </ion-title>
-          <ion-text>{{review.valutation}} </ion-text>
-          <ion-card-content class="text"> {{review.text}}
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
+      <!-- </ion-col>
+    </ion-row> -->
   </ion-grid>
 
 </ion-content>
+

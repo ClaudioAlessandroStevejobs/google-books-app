@@ -12,22 +12,21 @@
 
 
       <ion-row>
-        <ion-radio-group>
-          <ion-col>
-            <ion-item expand="block">
-              <ion-radio slot="start" formControlName="role" (click)="changeRole('READER')"></ion-radio>
-              <ion-icon src="../../../assets/icon/reading-book.svg"></ion-icon>
-              <ion-label color="medium">I'm a reader</ion-label>
-            </ion-item>
-          </ion-col>
-          <ion-col>
-            <ion-item expand="block">
-              <ion-radio slot="start" (click)="changeRole('WRITER')"></ion-radio>
-              <ion-icon src="../../../assets/icon/writing.svg"></ion-icon>
-              <ion-label color="medium">I'm a writer</ion-label>
-            </ion-item>
-          </ion-col>
-        </ion-radio-group>
+        <ion-col>
+          <ion-item>
+            <ion-radio slot="start" formControlName="role" (click)="changeRole('READER')"></ion-radio>
+            <ion-icon src="../../../assets/icon/reading-book.svg"></ion-icon>
+            <ion-label color="medium">I'm a reader</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-radio slot="start" (click)="changeRole('WRITER')"></ion-radio>
+            <ion-icon src="../../../assets/icon/writing.svg"></ion-icon>
+            <ion-label color="medium">I'm a writer</ion-label>
+          </ion-item>
+        </ion-col>
+
       </ion-row>
     </ion-radio-group>
   </ion-list>
