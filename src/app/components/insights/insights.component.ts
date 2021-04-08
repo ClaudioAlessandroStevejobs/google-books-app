@@ -1,5 +1,5 @@
 import { Book } from 'src/app/interfaces/book';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Writer } from 'src/app/interfaces/writer';
 import { BooksService } from 'src/app/services/books.service';
 import { WriterService } from 'src/app/services/writer.service';
@@ -13,9 +13,7 @@ export class InsightsComponent {
   constructor(
     private writerService: WriterService,
     private booksService: BooksService
-  ) {
-    // this.canvasHeight = `${(this.myBooks.length -1)*30}px`
-  }
+  ) {}
   @ViewChild('barCanvas') barCanvas: ElementRef;
   barChart: Chart;
   writer: Writer;
@@ -23,8 +21,7 @@ export class InsightsComponent {
   myBooks: Book[];
   divHeight: any;
 
-  async ionViewWillEnter() {
-    // this.canvasHeight = `${(this.myBooks.length -1)*30}px`;
+  async ionViewWillEnter() {;
     this.writer = await this.writerService.getWriter();
     this.fund = this.writer._fund;
     this.myBooks = await this.booksService.getBooksByIds(this.writer._booksIds);

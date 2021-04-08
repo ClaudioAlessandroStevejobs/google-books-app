@@ -1,8 +1,7 @@
 import { WriterService } from 'src/app/services/writer.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
 import { toast } from 'src/app/utilities/toast';
 
 @Component({
@@ -10,7 +9,7 @@ import { toast } from 'src/app/utilities/toast';
   templateUrl: './book-form.page.html',
   styleUrls: ['./book-form.page.scss'],
 })
-export class BookFormPage implements OnInit {
+export class BookFormPage{
   bookForm = this.formBuilder.group({
     title: new FormControl('', Validators.compose([Validators.required])),
     genre: new FormControl('', Validators.compose([Validators.required])),
@@ -25,8 +24,6 @@ export class BookFormPage implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router
   ) {}
-
-  ngOnInit(): void {}
 
   async onSubmit() {
     try {

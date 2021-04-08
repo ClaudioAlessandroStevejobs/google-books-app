@@ -127,13 +127,13 @@ export class ReaderService {
         { headers }
       )
       .toPromise()
-      .catch((err) => {
-        switch (err.status) {
+      .catch(({status}) => {
+        switch (status) {
           case 403:
-            customAlert(err.status, 'Not enough money', 'Your sold is not enough for this order')
+            customAlert(status, 'Not enough money', 'Your sold is not enough for this order')
             break;
           case 409:
-            customAlert(err.status, 'Book already owned', 'One or more books are already in your library');
+            customAlert(status, 'Book already owned', 'One or more books are already in your library');
             break;
           case 400:
             alert('Bad request');

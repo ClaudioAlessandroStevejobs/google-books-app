@@ -5,7 +5,6 @@ import {
   LogoutResponse
 } from '../interfaces/auth';
 import { customAlert } from '../utilities/alert';
-import { toast } from '../utilities/toast';
 @Injectable({
   providedIn: 'root',
 })
@@ -28,7 +27,6 @@ export class AuthService {
         role,
       })
       .toPromise()
-      // .then(() => {toast('Successfully logged in')})
       .catch((err) => {
         switch (err.status) {
           case 401:
@@ -62,10 +60,10 @@ export class AuthService {
         role,
       })
       .toPromise()
-      .catch((err) => {
-        switch (err.status) {
+      .catch(({status}) => {
+        switch (status) {
           case 409:
-            customAlert(err.status, 'Already exists', 'This email has already registered')
+            customAlert(status, 'Already exists', 'This email has already registered')
             break;
           case 400:
             alert('Bad request');

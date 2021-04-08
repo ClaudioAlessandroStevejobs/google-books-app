@@ -1,6 +1,5 @@
-import { Review } from 'src/app/interfaces/review';
 import { ReaderService } from 'src/app/services/reader.service';
-import { ChangeDetectorRef, Component, OnChanges, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/interfaces/book';
 import { Reader } from 'src/app/interfaces/reader';
@@ -65,7 +64,7 @@ export class BookDetailsPage {
   };
 
   isAddable = (): boolean => {
-    if (localStorage.getItem('token')) {
+    localStorage.getItem('token') &&
       ({
         WRITER: async () => {
           this.user = await this.writerService.getWriter();
@@ -74,7 +73,7 @@ export class BookDetailsPage {
           this.user = await this.readerService.getReader();
         },
       }[localStorage.getItem('role')]());
-    }
+    
     return (
       localStorage.getItem('token') &&
       !this.user?._booksIds.includes(this.book._id) &&

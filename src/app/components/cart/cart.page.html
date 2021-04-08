@@ -47,7 +47,7 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-button size="large" mode="ios" expand="full" color="warning" shape="round">
+      <ion-button (click)="buy()" size="large" mode="ios" expand="full" color="warning" shape="round">
         <ion-icon size="large" name="cash-outline"></ion-icon>
         <ion-col>
           <ion-text class="ion-text-center">{{getTotal()}} €</ion-text>

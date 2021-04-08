@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { toast } from 'src/app/utilities/toast';
-
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -12,7 +11,7 @@ import { toast } from 'src/app/utilities/toast';
     '../auth-container/auth-container.page.scss',
   ],
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent{
   role = 'READER';
   nations = ['Italy', 'France', 'Germany', 'England'];
   email: string;
@@ -54,10 +53,10 @@ export class SignUpComponent implements OnInit {
 
   arePasswordsSame = (): boolean =>
     this.signUpForm.value.password === this.signUpForm.value.confirmPassword;
-  constructor(
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private authService: AuthService
+    constructor(
+      private router: Router,
+      private formBuilder: FormBuilder,
+      private authService: AuthService
   ) {}
 
   hasPasswordErrors = () => 
@@ -86,8 +85,6 @@ export class SignUpComponent implements OnInit {
             this.signUpForm.hasError('email', 'email')
           )
 
-  ngOnInit(): void {}
-
   async onSubmit() {
     try {
       const registerResponse = await this.authService.register(
@@ -103,11 +100,8 @@ export class SignUpComponent implements OnInit {
         this.signUpForm.value.role
       );
       if (!loginResponse) return;
-      
       toast('Successfully logged in');
-
       const { id, token } = loginResponse;
-
       const inventory = [] as string[];
       localStorage.setItem('inventory', JSON.stringify(inventory));
       localStorage.setItem('id', id);

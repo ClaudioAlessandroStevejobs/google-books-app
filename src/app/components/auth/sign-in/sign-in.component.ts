@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   Validators,
   FormBuilder,
@@ -16,7 +16,7 @@ import { toast } from 'src/app/utilities/toast';
     '../auth-container/auth-container.page.scss',
   ],
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent{
   response = {
     id: '',
     token: '',
@@ -85,6 +85,4 @@ export class SignInComponent implements OnInit {
             this.signInForm.hasError('required', 'email') ||
             this.signInForm.hasError('email', 'email')
           )
-
-  ngOnInit() {}
 }

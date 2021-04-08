@@ -1,4 +1,4 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import * as moment from 'moment';
 import { Book } from '../../interfaces/book';
 import { BooksService } from '../../services/books.service';
@@ -31,13 +31,4 @@ export class HomePage {
       alert(err);
     }
   }
-  // getAuthorName = async (id: string) : Promise<string> => {
-  //   try {
-  //     return await this.booksService.getAuthorName(id)
-  //   }
-  //   catch (err) {
-  //     alert(err.err);
-  //     return "fweniofew"
-  //   }
-  // };
 }

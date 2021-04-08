@@ -1,5 +1,4 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Book } from 'src/app/interfaces/book';
 import { Reader } from 'src/app/interfaces/reader';
 import { BooksService } from 'src/app/services/books.service';
@@ -17,38 +16,34 @@ export class SearchPage implements OnInit, OnChanges {
   reader: Reader;
   constructor(
     private booksService: BooksService,
-    private router: Router,
     private readerService: ReaderService
   ) {}
 
   async ngOnInit() {
     try {
-      const books = await this.booksService.getBooks();
-      this.books = books;
-
-      if (localStorage.getItem('token')) {
+      this.books = await this.booksService.getBooks();
+      if (localStorage.getItem('token')) 
         this.reader = await this.readerService.getReader();
-      }
     } catch (err) {
       throw new Error(err);
     }
   }
 
-  searchBooks() {}
-
   ngOnChanges() {
     this.searchedBooks =
       this.search !== '' && this.search !== ' '
         ? this.books.filter(
-            (book) =>
-              (book._author.includes(this.search) ||
+            async (book) =>
+              (
+                (await this.booksService.getAuthorName(book._author)).includes(this.search) ||
                 book._title.includes(this.search) ||
-                String(book._price) == this.search) &&
+                String(book._price) === this.search
+              ) &&
               !this.reader?._booksIds.includes(book._id) &&
               !JSON.parse(localStorage.getItem('inventory')!)?.includes(
                 book._id
               )
-          )
+        )
         : [];
   }
 }

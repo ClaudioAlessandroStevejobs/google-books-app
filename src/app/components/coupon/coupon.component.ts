@@ -1,16 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-coupon',
   templateUrl: './coupon.component.html',
   styleUrls: ['./coupon.component.scss'],
 })
-export class CouponComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-
-  code: string = 'Ciao';
+export class CouponComponent{
+  code: string = '';
   copyCode(val: string) {
     const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';

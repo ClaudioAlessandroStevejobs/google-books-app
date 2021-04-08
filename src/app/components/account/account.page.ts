@@ -53,9 +53,8 @@ export class AccountPage implements OnInit {
   }
 
   ionViewDidEnter() {
-    if (!localStorage.getItem('role')) {
-      this.router.navigate(['logged-out']);
-    }
+    !localStorage.getItem('role') &&
+      this.router.navigate(['logged-out'])
   }
 
   logout() {

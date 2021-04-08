@@ -21,9 +21,8 @@ export class CartPage {
   ) {}
 
   async ionViewWillEnter() {
-    if (!localStorage.getItem('role')) {
+    !localStorage.getItem('role') && 
       this.router.navigate(['logged-out']);
-    }
     this.inventory = JSON.parse(localStorage.getItem('inventory')!);
     this.books = await this.bService.getBooksByIds(this.inventory);
   }
@@ -33,22 +32,20 @@ export class CartPage {
     localStorage.setItem(
       'inventory',
       JSON.stringify(
-        inventory.filter((bookId) => {
-          return bookId !== id;
-        })
+        inventory.filter((bookId) => 
+          bookId !== id
+        )
       )
     );
-    this.books = this.books.filter((book) => {
-      return book._id !== id;
-    });
+    this.books = this.books.filter(({_id}) => 
+      _id !== id
+    );
   }
 
-  getTotal = () => this.books?.map((b) => b._price).reduce((c, t) => c + t);
+  getTotal = () => this.books?.map(({_price }) => _price).reduce((c, t) => c + t);
   buy = async () => {
     try {
-      if (this.cartCoupon !== '')
-        await this.rService.makeOrder(this.inventory, this.cartCoupon);
-      else await this.rService.makeOrder(this.inventory);
+      await this.rService.makeOrder(this.inventory, this.cartCoupon !== '' && this.cartCoupon);
       localStorage.setItem('inventory', JSON.stringify([]));
       this.router.navigate(['/books']);
     } catch (error) {
