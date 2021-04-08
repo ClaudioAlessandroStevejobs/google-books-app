@@ -61,7 +61,7 @@ export class BookDetailsPage {
     ) as string[];
     inventory.push(this.book?._id!);
     localStorage.setItem('inventory', JSON.stringify(inventory));
-    this.router.navigate(['/search']);
+    this.router.navigate(['/cart']);
   };
 
   isAddable = (): boolean => {
