@@ -13,7 +13,18 @@ import { WriterService } from 'src/app/services/writer.service';
   styleUrls: ['./book-details.page.scss'],
 })
 export class BookDetailsPage {
-  book: Book;
+  book: Book = {
+    _img: '',
+    _title: '',
+    _price: 0,
+    _author: '',
+    _description: '',
+    _soldCopies: 0,
+    _editors: [],
+    _id: '',
+    _launchDate: '',
+    _reviews: [],
+  };
   user: Reader | Writer;
   constructor(
     private activatedroute: ActivatedRoute,
@@ -22,23 +33,22 @@ export class BookDetailsPage {
     private writerService: WriterService,
     private router: Router
   ) {}
+  author: string;
 
-<<<<<<< HEAD
-  ngOnInit() {
-=======
   async ngOnInit() {
     this.ionViewWillEnter();
   }
 
   async ionViewWillEnter() {
-
->>>>>>> ef555142a4ea043ff36b5f380b62aeee26775de3
     try {
       this.activatedroute.paramMap.subscribe(async (params) => {
         const [book] = await this.booksService.getBooksByIds([
           params.get('id'),
         ]);
         this.book = book;
+        this.booksService
+          .getAuthorName(this.book._author)
+          .then((res) => (this.author = res));
       });
     } catch (error) {
       throw new Error(error);
@@ -57,9 +67,13 @@ export class BookDetailsPage {
   isAddable = (): boolean => {
     if (localStorage.getItem('token')) {
       ({
-        WRITER: async () => { this.user =  await this.writerService.getWriter()},
-        READER: async () => { this.user =  await this.readerService.getReader()}
-      }[localStorage.getItem('role')])();
+        WRITER: async () => {
+          this.user = await this.writerService.getWriter();
+        },
+        READER: async () => {
+          this.user = await this.readerService.getReader();
+        },
+      }[localStorage.getItem('role')]());
     }
     return (
       localStorage.getItem('token') &&

@@ -1,7 +1,5 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActionSheetController } from '@ionic/angular';
 import { Book } from 'src/app/interfaces/book';
 import { BooksService } from 'src/app/services/books.service';
 import { ReaderService } from 'src/app/services/reader.service';
@@ -14,12 +12,12 @@ import { ReaderService } from 'src/app/services/reader.service';
 export class CartPage {
   inventory: string[] = [];
   books: Book[] = [];
+  cartCoupon: string = '';
 
   constructor(
     private bService: BooksService,
     private rService: ReaderService,
-    private router: Router,
-    private actionSheetController: ActionSheetController
+    private router: Router
   ) {}
 
   async ionViewWillEnter() {
@@ -44,59 +42,17 @@ export class CartPage {
       return book._id !== id;
     });
   }
-  // cartForm = new FormGroup({
-  //   coupon: new FormControl('', []),
-  // });
 
-  // get cartCoupon() {
-  //   return this.cartForm.get('coupon');
-  // }
-
-  // getTotal = () => this.books?.map((b) => b._price).reduce((c, t) => c + t);
+  getTotal = () => this.books?.map((b) => b._price).reduce((c, t) => c + t);
   buy = async () => {
     try {
-      // if (this.cartCoupon?.value != '')
-      //   await this.rService.makeOrder(this.inventory, this.cartCoupon?.value); else
-      await this.rService.makeOrder(this.inventory);
-
-      this.router.navigate(['/books']);
+      if (this.cartCoupon !== '')
+        await this.rService.makeOrder(this.inventory, this.cartCoupon);
+      else await this.rService.makeOrder(this.inventory);
       localStorage.setItem('inventory', JSON.stringify([]));
+      this.router.navigate(['/books']);
     } catch (error) {
       throw new Error(error);
     }
   };
-
-  async presentActionSheet() {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Proceed to Purchase',
-      cssClass: 'buy-action-sheet',
-      buttons: [
-        {
-          text: `Totale prezzo: "inserire qui non mi ricordo il reduce"`,
-          handler: () => {},
-        },
-        {
-          text: 'Add a coupon:',
-          icon: 'share',
-          handler: () => {
-            console.log('Share clicked');
-          },
-        },
-        {
-          text: 'Buy',
-          icon: 'caret-forward-circle',
-          handler: () => {
-            this.buy();
-            //alert bel acquisto o acquisto fallito
-          },
-        },
-        {
-          text: 'Cancel',
-          icon: 'close',
-          role: 'cancel',
-        },
-      ],
-    });
-    await actionSheet.present();
-  }
 }

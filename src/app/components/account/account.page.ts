@@ -11,7 +11,16 @@ import { WriterService } from 'src/app/services/writer.service';
   styleUrls: ['./account.page.scss'],
 })
 export class AccountPage implements OnInit {
-  user: Reader | Writer;
+  user: Reader | Writer = {
+    _email: '',
+    _password: '',
+    _nationality: '',
+    _fund: 0,
+    _booksIds: [],
+    _orders: [],
+    _coupons: [],
+    _id: '',
+  };
   constructor(
     private router: Router,
     private authService: AuthService,
