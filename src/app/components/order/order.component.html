@@ -1,72 +1,12 @@
-<!-- <div class="containerTable">
-  <nav class="navbar navbar-light bg-light">
-      <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-              <h4> My Orders </h4>
-          </a>
-      </div>
-  </nav>
-  <table class="table">
-      <thead>
-          <tr>
-              <th scope="col">Date:</th>
-              <th scope="col">N.Order</th>
-              <th scope="col">Title</th>
-              <th scope="col">Total</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let order of orders">
-              <th scope="row">{{order.date}}</th>
-              <td>{{order.id}}</td>
-              <td>{{order.inventory}}</td>
-              <td>{{order.total}}</td>
-          </tr>
-      </tbody>
-  </table>
-</div> -->
 <ion-item>
-  <ion-grid style="border-style: solid;">
-    <ion-row>
-      <ion-col class="cell-class">
-        Date
-      </ion-col>
-      <ion-col>
-        N.Order
-      </ion-col>
-      <ion-col>
-        Title
-      </ion-col>
-      <ion-col>
-        Total
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        Prova 1
-      </ion-col>
-      <ion-col>
-        Prova 1
-      </ion-col>
-      <ion-col>
-        Prova 1
-      </ion-col>
-      <ion-col>
-        Prova 1
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-item>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title><p >L'incubo di Hill House</p> </ion-card-title>
+      <ion-card-subtitle>Shirley Jackson</ion-card-subtitle>
+    </ion-card-header>
 
-<ion-content>
-	<ion-content padding class="tab5-content">
-		<ion-grid style="">
-			<ion-row *ngFor="let item of data; index as i" >
-				<ion-col col-auto class="cell-class"> {{ item.field1 }}</ion-col>
-				<ion-col text-right  class="cell-class" style="margin-left : -1px">
-           {{ item.field2 }}
-        </ion-col>
-			</ion-row>
-		</ion-grid>
-	</ion-content>
-</ion-content>
+    <ion-card-content>
+      18 $
+    </ion-card-content>
+  </ion-card>
+</ion-item>

@@ -8,7 +8,7 @@ import { Writer } from '../interfaces/writer';
 export class WriterService {
   writerURI = 'http://localhost:3001/writer';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   getWriter = () => {
     const token = localStorage.getItem('token')!;
@@ -24,7 +24,8 @@ export class WriterService {
     price: number,
     genre: string,
     description: string,
-    editor: string
+    editor: string,
+    img: string
   ) => {
     const token = localStorage.getItem('token')!;
     const headers = new HttpHeaders().set('token', token);
@@ -39,6 +40,7 @@ export class WriterService {
             genre,
             description,
             editors,
+            img,
           },
           { headers }
         )

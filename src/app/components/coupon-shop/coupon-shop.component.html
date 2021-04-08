@@ -14,3 +14,7 @@
     <ion-textarea [(ngModel)]="todo.description" placeholder="example@email.com" name="description"></ion-textarea>
   </ion-item>
 </form>
+
+<ion-item *ngFor="let coupon of coupons">
+  <app-coupon [coupon]="coupon"></app-coupon>
+</ion-item>

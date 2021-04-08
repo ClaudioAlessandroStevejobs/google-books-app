@@ -98,10 +98,22 @@ export class SignUpComponent implements OnInit {
         this.signUpForm.value.role
       );
 
-      alert(this.signUpForm.value.selectedNation);
+      const loginResponse = await this.authService.login(
+        this.signUpForm.value.email,
+        this.signUpForm.value.password,
+        this.signUpForm.value.role
+      );
+      if (!loginResponse) {
+        return;
+      }
+      const { id, token } = loginResponse;
 
-      // qui non ci arriva, bisognerebbe catchare l'errore nel servizio nella funzione(),
-      // controllarsi lo status della call e non dare mai errore qui.
+      const inventory = [] as string[];
+      localStorage.setItem('inventory', JSON.stringify(inventory));
+      localStorage.setItem('id', id);
+      localStorage.setItem('token', token);
+      localStorage.setItem('role', this.signUpForm.value.role);
+      this.router.navigate(['/home']);
     } catch (err) {
       throw new Error(err);
     }

@@ -13,32 +13,12 @@ export class AccountPage implements OnInit {
   nationality: string = 'Italiana';
   money: number = 50;
 
-  public data = [
-    {
-      field1: 'test1',
-      field2: 'test2',
-    },
-    {
-      field1: 'test1',
-      field2: 'test2',
-    },
-    {
-      field1: 'test1',
-      field2: 'test2',
-    },
-    {
-      field1: 'test1',
-      field2: 'test2',
-    },
-    {
-      field1: 'test1',
-      field2: 'test2',
-    },
-  ];
-
   constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.email = localStorage.getItem('id');
+    this.nationality = localStorage.getItem('token');
+  }
 
   ionViewDidEnter() {
     if (!localStorage.getItem('role')) {

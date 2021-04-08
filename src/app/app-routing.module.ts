@@ -2,17 +2,14 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   loadChildren: () =>
-  //     import('./components/auth/auth-container/auth-container.module').then(
-  //       (m) => m.AuthContainerPageModule
-  //     ),
-  // },
   {
     path: '',
     loadChildren: () =>
       import('./components/tabs/tabs.module').then((m) => m.TabsPageModule),
+  },
+  {
+    path: 'book-form',
+    loadChildren: () => import('./components/book-form/book-form.module').then( m => m.BookFormPageModule)
   },
 ];
 

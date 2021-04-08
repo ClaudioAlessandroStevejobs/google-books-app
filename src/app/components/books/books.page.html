@@ -1,3 +1,41 @@
+<app-header tabName="Library"></app-header>
+
+<!-- 
+<ion-grid fixed="true">
+  <ion-title style="text-align: start;">My books</ion-title>
+  <ion-row>
+    <ion-col class="card" *ngFor="let book of myBooks" style="width: 50%;">
+      <ion-card class="card">
+        <ion-img src='./../../../assets/images/exampleImg.png'></ion-img>
+        <ion-card-title style="font-size: small;">{{book._title}}</ion-card-title>
+        <ion-card-content>
+          <ion-title style="text-overflow:ellipsis;" style="font-size: small;">
+            Founded in 1829 on an isthmus between Lake Monona and Lake Mendota,
+            Madison was named the capital of the Wisconsin Territory in 1836.
+          </ion-title>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid> -->
+
 <ion-content>
-  <h1>books personali</h1>
+  <ion-grid fixed="true">
+    <ion-row>
+      <ion-col *ngFor='let book of myBooks; let i = index'>
+        <app-book-item [inLibrary]='true' [isCard]='true' [book]='book'
+          [ngClass]="i % 2 === 0 && i === myBooks.length-1 && 'lastOddElement'">
+        </app-book-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+<!-- <ion-grid fixed="true">
+    <ion-row>
+      <ion-col *ngFor="let book of books" style="width: 50%;">
+        <app-book-item [isCard]='true' [book]='book'></app-book-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content> -->

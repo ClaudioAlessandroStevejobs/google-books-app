@@ -1,0 +1,46 @@
+<app-header tabName="Book Form"></app-header>
+<ion-content>
+
+  <ion-item class="divider-large"></ion-item>
+  <ion-grid fixed="true">
+
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-row>
+              <ion-col>
+                <ion-icon size="large" name="book-outline"></ion-icon>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-title>Post a brand new book,</ion-title>
+              <ion-title>everyone will love it!</ion-title>
+            </ion-row>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+
+              <ion-input placeholder="Title" mode="ios" formControlName="title"></ion-input>
+              <ion-input placeholder="Genre" mode="ios" formControlName="genre"></ion-input>
+              <ion-input placeholder="Editor" mode="ios" formControlName="editor">
+              </ion-input>
+              <ion-textarea placeholder="Description" mode="ios" formControlName="description">
+              </ion-textarea>
+              <ion-textarea placeholder="Image Source URL" mode="ios" formControlName="imageURL">
+              </ion-textarea>
+              <ion-input placeholder="Price" type="number" inputmode="number" mode="ios" formControlName="price">
+              </ion-input>
+
+              <ion-button type="submit" (click)="onSubmit()" [disabled]="!bookForm.valid" expand="block" color="success"
+                shape="round">Let's go!</ion-button>
+
+            </ion-form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
