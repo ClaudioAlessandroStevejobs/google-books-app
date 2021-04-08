@@ -19,13 +19,13 @@ export class HomePage {
         .map((b) => b)
         .sort(
           (bookA: Book, bookB: Book) =>
-            moment(bookA._launchDate, 'DD/MM/YYYY').unix() -
-            moment(bookB._launchDate, 'DD/MM/YYYY').unix()
+            moment(bookB._launchDate, 'DD/MM/YYYY').unix() -
+            moment(bookA._launchDate, 'DD/MM/YYYY').unix()
         );
       this.bestBooks = books
         .map((b) => b)
         .sort(
-          (bookA: Book, bookB: Book) => bookA._soldCopies - bookB._soldCopies
+          (bookA: Book, bookB: Book) => bookB._soldCopies - bookA._soldCopies
         );
     } catch ({ err }) {
       alert(err);

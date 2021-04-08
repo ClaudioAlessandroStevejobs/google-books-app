@@ -3,12 +3,17 @@ ion-card{
 }
 ion-card-header {
     padding: 0;
+    margin: 0;
+    // width: 10em;
+    height: 15em;
+    
 }
 ion-card-content {
     text-align: left; margin: 4px;
 }
 ion-item{
-    box-shadow: 0em 1em 4em -1em rgba(161, 161, 161, 0.33); border-radius: 1.3em
+    box-shadow: 0em 1em 4em -1em rgba(161, 161, 161, 0.33); border-radius: 1.3em;
+    
 }
 
 ion-thumbnail{

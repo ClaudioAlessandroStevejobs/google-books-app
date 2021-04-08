@@ -5,6 +5,7 @@ import {
   LogoutResponse
 } from '../interfaces/auth';
 import { customAlert } from '../utilities/alert';
+import { toast } from '../utilities/toast';
 @Injectable({
   providedIn: 'root',
 })
@@ -18,7 +19,7 @@ export class AuthService {
     email: string,
     password: string,
     role: string
-  ): Promise<LoginResponse | undefined> => {
+  ): Promise<LoginResponse> => {
     localStorage.clear();
     return this.httpClient
       .post(this.loginURI, {
@@ -27,6 +28,7 @@ export class AuthService {
         role,
       })
       .toPromise()
+      // .then(() => {toast('Successfully logged in')})
       .catch((err) => {
         switch (err.status) {
           case 401:
