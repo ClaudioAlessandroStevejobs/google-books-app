@@ -37,20 +37,17 @@
               </ion-row>
             </ion-form>
 
-            <ion-row>
-              <ion-col>
-                <ion-button type="submit" [routerLink]="['/orders']" expand="block" color="warning" shape="round">
-                  MY ORDERS
-                </ion-button>
-              </ion-col>
-              <ion-col>
-                <ion-item class="divider-tiny"></ion-item>
-                <ion-button type="submit" [routerLink]="['/coupons']" expand="block" color="primary" shape="round">
-                  MY COUPONS
-                </ion-button>
-              </ion-col>
 
-            </ion-row>
+            <ion-button type="submit" [routerLink]="['/orders']" expand="block" color="warning" shape="round">
+              MY ORDERS
+            </ion-button>
+
+            <ion-item class="divider-tiny"></ion-item>
+            <ion-button type="submit" [routerLink]="['/coupons']" expand="block" color="primary" shape="round">
+              MY COUPONS
+            </ion-button>
+
+
           </ion-card-content>
           <ion-button type="submit" routerLinkActive="router-link-active" (click)="logout()" expand="block"
             color="danger">
