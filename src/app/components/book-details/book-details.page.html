@@ -4,6 +4,32 @@
   <ion-grid fixed="true">
     <ion-row>
       <ion-col>
+        <img src="https://m.media-amazon.com/images/M/MV5BOTQwZmQyYzEtODk5ZC00OTY3LWExMjAtYzRjNWFhNGM3MzBlXkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_UY1200_CR90,0,630,1200_AL_.jpg">
+          <ion-img [src]="" class="img"></ion-img>
+        </ion-col>
+        <ion-col>
+          <div>
+          <ion-text style="color: black; text-align: center;"> {{book._title}}
+          </ion-text> 
+          <br><br>
+          <ion-text style="text-align: center;" > {{book._author}} </ion-text>
+          <br><br>
+          <ion-text style="text-align: center;" > Genere: {{book._genre}} </ion-text>
+          <br><br>
+          <ion-text> {{book._launchDate}} </ion-text>
+       
+      <pre></pre>
+      <ion-button shape="round" color="warning">
+       {{book._price}}
+        <ion-icon name="cart-outline"> </ion-icon>
+      </ion-button>
+    
+    </div>
+    </ion-col>
+ </ion-row>
+      <ion-card-content>
+      <ion-text style=" color: rgb(72, 72, 72);"> {{book._description}} "ciao" </ion-text>
+    </ion-card-content>
         <ion-card>
           <ion-img src='{{book._img}}'></ion-img>
           <ion-title> {{book._title}} </ion-title>
@@ -16,8 +42,9 @@
             </ion-button>
           </ion-card-content>
         </ion-card>
-      </ion-col>
-    </ion-row>
+      <!-- </ion-col>
+    </ion-row> -->
   </ion-grid>
 
 </ion-content>
+

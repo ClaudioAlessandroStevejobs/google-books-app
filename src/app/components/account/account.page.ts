@@ -61,7 +61,7 @@ export class AccountPage implements OnInit {
   logout() {
     this.authService.logout();
     this.router.navigate(['/home']);
-    toast('Logout')
+    toast('Logout');
   }
 
   refill(): void {

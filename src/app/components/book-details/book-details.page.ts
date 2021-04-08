@@ -18,6 +18,7 @@ export class BookDetailsPage {
     _title: '',
     _price: 0,
     _author: '',
+    _genre:'',
     _description: '',
     _soldCopies: 0,
     _editors: [],
