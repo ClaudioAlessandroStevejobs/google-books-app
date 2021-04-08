@@ -15,6 +15,15 @@
       </ion-col>
     </ion-row>
 
+
+    <ion-item *ngIf="searchedBooks.length < 1" class="divider-medium"></ion-item>
+    <ion-item *ngIf="searchedBooks.length < 1" class="divider-medium"></ion-item>
+    <ion-row *ngIf="searchedBooks.length < 1">
+      <ion-col>
+        <ion-img src="../../../assets/images/library.svg" class="box box-img"></ion-img>
+      </ion-col>
+    </ion-row>
+
     <ion-row *ngFor="let book of searchedBooks">
       <ion-col>
         <app-book-item style="width: 90%" [isCard]='false' [book]="book"></app-book-item>

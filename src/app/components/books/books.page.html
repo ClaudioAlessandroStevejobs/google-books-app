@@ -2,6 +2,20 @@
 
 <ion-content>
   <ion-grid fixed="true">
+
+    <ion-item *ngIf="myBooks.length < 1" class="divider-large"></ion-item>
+    <ion-item *ngIf="myBooks.length < 1" class="divider-large"></ion-item>
+    <ion-row *ngIf="myBooks.length < 1">
+      <ion-col>
+        <ion-title class="ion-text-center box">Your library is empty :(</ion-title>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="myBooks.length < 1">
+      <ion-col>
+        <ion-img src="../../../assets/images/book.svg" class="box box-img"></ion-img>
+      </ion-col>
+    </ion-row>
+
     <ion-row>
       <ion-col *ngFor='let book of myBooks; let i = index'>
         <app-book-item [inLibrary]='true' [isCard]='true' [book]='book'

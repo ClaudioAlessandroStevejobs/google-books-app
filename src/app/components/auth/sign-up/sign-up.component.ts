@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { toast } from 'src/app/utilities/toast';
 
 @Component({
   selector: 'app-sign-up',
@@ -59,53 +60,52 @@ export class SignUpComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  hasPasswordErrors = () => {
-    if (!this.signUpForm.controls['password'].untouched)
-      if (!this.signUpForm.controls['password'].pristine)
-        return (
-          this.signUpForm.hasError('required', 'password') ||
-          this.signUpForm.value.password.length < 8
-        );
-  };
+  hasPasswordErrors = () => 
+    !this.signUpForm.controls['password'].untouched &&
+      !this.signUpForm.controls['password'].pristine &&
+          (
+            this.signUpForm.hasError('required', 'password') ||
+            this.signUpForm.value.password.length < 8
+          )
+        
 
-  hasConfirmPasswordErrors = () => {
-    if (!this.signUpForm.controls['confirmPassword'].untouched)
-      if (!this.signUpForm.controls['confirmPassword'].pristine)
-        return (
-          this.signUpForm.hasError('required', 'confirmPassword') ||
-          !this.arePasswordsSame() ||
-          this.signUpForm.value.password.length < 8
-        );
-  };
+  hasConfirmPasswordErrors = () => 
+    !this.signUpForm.controls['confirmPassword'].untouched &&
+      !this.signUpForm.controls['confirmPassword'].pristine &&
+          (
+            this.signUpForm.hasError('required', 'confirmPassword') ||
+            !this.arePasswordsSame() ||
+            this.signUpForm.value.password.length < 8
+          )
 
-  hasEmailErrors = () => {
-    if (!this.signUpForm.controls['email'].untouched)
-      if (!this.signUpForm.controls['email'].pristine)
-        return (
-          this.signUpForm.hasError('required', 'email') ||
-          this.signUpForm.hasError('email', 'email')
-        );
-  };
+  hasEmailErrors = () => 
+    !this.signUpForm.controls['email'].untouched &&
+      !this.signUpForm.controls['email'].pristine &&
+          (
+            this.signUpForm.hasError('required', 'email') ||
+            this.signUpForm.hasError('email', 'email')
+          )
 
   ngOnInit(): void {}
 
   async onSubmit() {
     try {
-      await this.authService.register(
+      const registerResponse = await this.authService.register(
         this.signUpForm.value.email,
         this.signUpForm.value.password,
         this.signUpForm.value.selectedNation,
         this.signUpForm.value.role
       );
-
+      if (!registerResponse) return
       const loginResponse = await this.authService.login(
         this.signUpForm.value.email,
         this.signUpForm.value.password,
         this.signUpForm.value.role
       );
-      if (!loginResponse) {
-        return;
-      }
+      if (!loginResponse) return;
+      
+      toast('Successfully logged in');
+
       const { id, token } = loginResponse;
 
       const inventory = [] as string[];

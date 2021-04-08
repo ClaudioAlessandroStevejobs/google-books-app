@@ -21,7 +21,7 @@ export class BooksPage {
     private booksService: BooksService
   ) {}
   user: Reader | Writer;
-  myBooks: Book[];
+  myBooks: Book[] = [];
   ionViewWillEnter() {
     if (!localStorage.getItem('role')) {
       this.router.navigate(['logged-out']);
@@ -38,7 +38,6 @@ export class BooksPage {
           (await this.readerService.getReader())._booksIds,
           false
         );
-        console.log(this.myBooks);
       },
     }[localStorage.getItem('role')]());
   }

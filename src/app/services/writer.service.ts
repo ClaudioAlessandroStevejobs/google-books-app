@@ -31,7 +31,7 @@ export class WriterService {
     const headers = new HttpHeaders().set('token', token);
     const editors = [editor];
     try {
-      await this.httpClient
+      return await this.httpClient
         .post(
           `${this.writerURI}/${localStorage.getItem('id')}/book`,
           {

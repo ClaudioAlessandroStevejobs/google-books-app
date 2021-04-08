@@ -1,6 +1,5 @@
 <ion-card *ngIf="isCard" button="true" (click)="redirectToDetails()">
-  <ion-card-header>
-    <ion-img [src]="img" alt=""></ion-img>
+  <ion-card-header [ngStyle]='img'>
   </ion-card-header>
 
   <ion-card-content>
@@ -12,7 +11,8 @@
 
 <ion-item button="true" *ngIf="!isCard" (click)="redirectToDetails()">
   <ion-thumbnail slot="start">
-    <ion-img [src]="img"></ion-img>
+    <ion-card-header [ngStyle]='img'>
+    </ion-card-header>
   </ion-thumbnail>
   <div>
     <ion-card-subtitle>{{author}}</ion-card-subtitle>

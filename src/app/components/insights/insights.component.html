@@ -1,17 +1,12 @@
 <app-header tabName="Library"></app-header>
 <ion-content>
-  <ion-title>Your current income is {{fund}}</ion-title>
+  <ion-item class="divider-medium"></ion-item>
+  <ion-title class="ion-text-center">Your current income is {{fund}} €</ion-title>
+  <ion-item class="divider-medium"></ion-item>
+  <ion-title color="medium">Books Copies</ion-title>
+  <ion-item class="divider-tiny"></ion-item>
   <div [ngStyle]='divHeight'>
     <canvas #barCanvas></canvas>
   </div>
-
-  <!-- <ion-card style="width: 100%; padding: 0 ;margin: 0">
-    <ion-card-header>
-      <ion-card-subtitle style="text-align: left;">Your sold copies:</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content style="width: 100%; margin: 0;">
-
-    </ion-card-content>
-  </ion-card> -->
 
 </ion-content>
