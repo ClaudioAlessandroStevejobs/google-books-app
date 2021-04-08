@@ -1,4 +1,6 @@
+import { toast } from 'src/app/utilities/toast';
 import { Component, Input, OnInit } from '@angular/core';
+import { Coupon } from 'src/app/interfaces/coupon';
 
 @Component({
   selector: 'app-coupon',
@@ -6,12 +8,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./coupon.component.scss'],
 })
 export class CouponComponent implements OnInit {
-  @Input() coupon;
+  @Input() coupon: Coupon;
   constructor() {}
 
   ngOnInit() {}
 
-  code: string = 'Ciao';
   copyCode(val: string) {
     const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
@@ -24,5 +25,7 @@ export class CouponComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+
+    toast('Copied to clipboard!');
   }
 }

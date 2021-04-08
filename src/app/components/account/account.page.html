@@ -17,7 +17,6 @@
             <ion-title> Welcome<br> {{ user._email }} </ion-title>
 
             <ion-text>
-              <h2>from {{user._nationality}}</h2>
               <ion-item class="divider-tiny"></ion-item>
               <h1>Wallet: {{updatedFund}}€</h1>
             </ion-text>
@@ -38,12 +37,14 @@
             </ion-form>
 
 
-            <ion-button type="submit" [routerLink]="['/orders']" expand="block" color="warning" shape="round">
+            <ion-button *ngIf="role()=='READER'" type="submit" (click)="ordersModal()" expand="block" color="warning"
+              shape="round">
               MY ORDERS
             </ion-button>
 
             <ion-item class="divider-tiny"></ion-item>
-            <ion-button type="submit" [routerLink]="['/coupons']" expand="block" color="primary" shape="round">
+            <ion-button *ngIf="role()=='READER'" type="submit" (click)="couponsModal()" expand="block" color="primary"
+              shape="round">
               MY COUPONS
             </ion-button>
 
@@ -57,22 +58,4 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-<<<<<<< HEAD
-
-  <ion-item>
-    <ion-input type="text" placeholder="Insert coupon"></ion-input> &nbsp; <ion-button color="primary">Send</ion-button>
-  </ion-item>
-
-  <ion-button style="margin-left: 3%; margin-right: 3%;" expand="block" href="#" color="primary" >Coupon</ion-button> <br>
-  <ion-button style="margin-left: 3%; margin-right: 3%;" expand="block" href="#" color="primary" >Order</ion-button> <br><br><br><br>
-
-  <ion-grid fixed="true">
-    </ion-grid>
-    <ion-button style="margin-left: 3%; margin-right: 3%;" type="submit" (click)="logout()" expand="block" color="primary">
-      LOGOUT
-    </ion-button>
-
 </ion-content>
-=======
-</ion-content>
->>>>>>> 8ffd8c63f34ff061526d507dc8720a3e388882b5

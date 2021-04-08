@@ -47,6 +47,14 @@ body {
   height: 5em;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active
+{
+ -webkit-text-fill-color: rgb(39, 75, 25) !important;
+ transition: background-color 5000s;
+}
 
 
 .column-flex-container {

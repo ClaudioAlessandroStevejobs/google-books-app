@@ -1,4 +1,12 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
 import { Order } from 'src/app/interfaces/order';
 import { Reader } from 'src/app/interfaces/reader';
 
@@ -7,14 +15,23 @@ import { Reader } from 'src/app/interfaces/reader';
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.scss'],
 })
-export class OrdersComponent implements OnInit {
+export class OrdersComponent implements OnChanges {
   @Input() reader: Reader | undefined;
   orders: Order[] | undefined;
-  constructor() {}
 
-  ngOnInit() {}
   ngOnChanges(changes: SimpleChanges) {
-    this.reader = changes.reader.currentValue;
     this.orders = this.reader?._orders;
+  }
+
+  constructor(private modalController: ModalController) {}
+
+  ionViewWillEnter() {
+    this.orders = this.reader?._orders;
+  }
+
+  dismiss() {
+    this.modalController.dismiss({
+      dismissed: true,
+    });
   }
 }

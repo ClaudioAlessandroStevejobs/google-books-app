@@ -1,12 +1,15 @@
+import { OrdersComponent } from './../orders/orders.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { Reader } from 'src/app/interfaces/reader';
 import { Writer } from 'src/app/interfaces/writer';
 import { AuthService } from 'src/app/services/auth.service';
 import { ReaderService } from 'src/app/services/reader.service';
 import { WriterService } from 'src/app/services/writer.service';
 import { toast } from 'src/app/utilities/toast';
+import { CouponShopComponent } from '../coupon-shop/coupon-shop.component';
 @Component({
   selector: 'app-account',
   templateUrl: './account.page.html',
@@ -34,10 +37,18 @@ export class AccountPage implements OnInit {
     private authService: AuthService,
     private writerService: WriterService,
     private readerService: ReaderService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private modalController: ModalController
   ) {}
 
-  ngOnInit() {
+  role = () => localStorage.getItem('role');
+
+  ngOnInit() {}
+
+  ionViewDidEnter() {
+    if (!localStorage.getItem('role')) {
+      this.router.navigate(['logged-out']);
+    }
     if (localStorage.getItem('token')) {
       ({
         WRITER: async () => {
@@ -52,12 +63,6 @@ export class AccountPage implements OnInit {
     }
   }
 
-  ionViewDidEnter() {
-    if (!localStorage.getItem('role')) {
-      this.router.navigate(['logged-out']);
-    }
-  }
-
   logout() {
     this.authService.logout();
     this.router.navigate(['/home']);
@@ -68,5 +73,27 @@ export class AccountPage implements OnInit {
     this.readerService.refill(this.refillForm.value.money);
     this.updatedFund += this.refillForm.value.money;
     this.refillForm.controls['money'].setValue(0);
+  }
+
+  async couponsModal() {
+    const modal = await this.modalController.create({
+      component: CouponShopComponent,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        reader: this.user,
+      },
+    });
+    return await modal.present();
+  }
+
+  async ordersModal() {
+    const modal = await this.modalController.create({
+      component: OrdersComponent,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        reader: this.user,
+      },
+    });
+    return await modal.present();
   }
 }

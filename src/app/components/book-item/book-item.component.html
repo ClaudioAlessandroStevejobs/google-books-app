@@ -1,22 +1,22 @@
 <ion-card *ngIf="isCard" button="true" (click)="redirectToDetails()">
-  <ion-card-header [ngStyle]='img'>
-  </ion-card-header>
+  <ion-img [src]="img"></ion-img>
 
   <ion-card-content>
     <ion-card-subtitle>{{author}}</ion-card-subtitle>
     <ion-card-title>{{title}}</ion-card-title>
-    <ion-card-subtitle *ngIf="!inLibrary">{{price}}$</ion-card-subtitle>
+    <ion-card-subtitle *ngIf="!inLibrary">{{price}}€</ion-card-subtitle>
   </ion-card-content>
 </ion-card>
 
 <ion-item button="true" *ngIf="!isCard" (click)="redirectToDetails()">
   <ion-thumbnail slot="start">
-    <ion-card-header [ngStyle]='img'>
-    </ion-card-header>
+
+    <ion-img [src]="img"></ion-img>
   </ion-thumbnail>
   <div>
     <ion-card-subtitle>{{author}}</ion-card-subtitle>
     <ion-card-title>{{title}}</ion-card-title>
-    <ion-card-subtitle>{{price}}$</ion-card-subtitle>
+    <ion-card-subtitle>{{price}}€</ion-card-subtitle>
   </div>
+
 </ion-item>
