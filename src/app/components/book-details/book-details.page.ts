@@ -23,16 +23,12 @@ export class BookDetailsPage {
     private router: Router
   ) {}
 
-<<<<<<< HEAD
-  ngOnInit() {
-=======
   async ngOnInit() {
     this.ionViewWillEnter();
   }
 
   async ionViewWillEnter() {
 
->>>>>>> ef555142a4ea043ff36b5f380b62aeee26775de3
     try {
       this.activatedroute.paramMap.subscribe(async (params) => {
         const [book] = await this.booksService.getBooksByIds([

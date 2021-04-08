@@ -17,7 +17,7 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'books/details/:id',
+        path: 'books/:id',
         component: BookDetailsPage,
       },
       {
