@@ -5,6 +5,7 @@ import { Writer } from 'src/app/interfaces/writer';
 import { AuthService } from 'src/app/services/auth.service';
 import { ReaderService } from 'src/app/services/reader.service';
 import { WriterService } from 'src/app/services/writer.service';
+import { toast } from 'src/app/utilities/toast';
 @Component({
   selector: 'app-account',
   templateUrl: './account.page.html',
@@ -42,5 +43,6 @@ export class AccountPage implements OnInit {
   logout() {
     this.authService.logout();
     this.router.navigate(['/home']);
+    toast('Logout')
   }
 }

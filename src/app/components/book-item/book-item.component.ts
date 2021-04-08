@@ -9,7 +9,7 @@ import { BooksService } from '../../services/books.service';
   styleUrls: ['./book-item.component.scss'],
 })
 export class BookItemComponent implements OnInit {
-  img: string;
+  img;
   title: string;
   price: number;
   author: string;
@@ -21,7 +21,11 @@ export class BookItemComponent implements OnInit {
   ngOnInit() {
     this.title = this.book._title;
     this.price = this.book._price;
-    this.img = this.book._img;
+    this.img = {
+      "background-image": `url(${this.book._img})`,
+      "background-size": "cover",
+
+    }
     this.booksService
       .getAuthorName(this.book._author)
       .then((res) => (this.author = res));

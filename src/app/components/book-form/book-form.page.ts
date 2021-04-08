@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { toast } from 'src/app/utilities/toast';
 
 @Component({
   selector: 'app-book-form',
@@ -29,7 +30,7 @@ export class BookFormPage implements OnInit {
 
   async onSubmit() {
     try {
-      await this.writerService.addBook(
+      const addBookResponse = await this.writerService.addBook(
         this.bookForm.value.title,
         this.bookForm.value.price,
         this.bookForm.value.genre,
@@ -37,6 +38,7 @@ export class BookFormPage implements OnInit {
         this.bookForm.value.editor,
         this.bookForm.value.imageURL
       );
+      if(addBookResponse) toast('Book added successfully');
       this.bookForm.controls['title'].setValue('');
       this.bookForm.controls['price'].setValue('');
       this.bookForm.controls['genre'].setValue('');

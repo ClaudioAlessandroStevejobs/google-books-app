@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {
   Validators,
   FormBuilder,
-  FormGroup,
   FormControl,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
+import { toast } from 'src/app/utilities/toast';
 
 @Component({
   selector: 'app-sign-in',
@@ -52,9 +51,8 @@ export class SignInComponent implements OnInit {
         this.signInForm.value.password,
         this.signInForm.value.role
       );
-      if (!loginResponse) {
-        return;
-      }
+      if (!loginResponse) return;
+      toast('Successfully logged in');
       const { id, token } = loginResponse;
 
       const inventory = [] as string[];
@@ -72,23 +70,21 @@ export class SignInComponent implements OnInit {
     this.signInForm.controls.role.setValue(role);
   };
 
-  hasPasswordErrors = () => {
-    if (!this.signInForm.controls['password'].untouched)
-      if (!this.signInForm.controls['password'].pristine)
-        return (
-          this.signInForm.hasError('required', 'password') ||
-          this.signInForm.value.password.length < 8
-        );
-  };
+  hasPasswordErrors = () => 
+    !this.signInForm.controls['password'].untouched &&
+      !this.signInForm.controls['password'].pristine &&
+          (
+            this.signInForm.hasError('required', 'password') ||
+            this.signInForm.value.password.length < 8
+          )
 
-  hasEmailErrors = () => {
-    if (!this.signInForm.controls['email'].untouched)
-      if (!this.signInForm.controls['email'].pristine)
-        return (
-          this.signInForm.hasError('required', 'email') ||
-          this.signInForm.hasError('email', 'email')
-        );
-  };
+  hasEmailErrors = () => 
+    !this.signInForm.controls['email'].untouched && 
+      !this.signInForm.controls['email'].pristine &&
+          (
+            this.signInForm.hasError('required', 'email') ||
+            this.signInForm.hasError('email', 'email')
+          )
 
   ngOnInit() {}
 }
