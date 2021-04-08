@@ -5,6 +5,7 @@ export interface Book {
   _title: string;
   _price: number;
   _author: string;
+  _genre: string;
   _description: string;
   _soldCopies: number;
   _editors: string[];

@@ -2,7 +2,7 @@
 
 <ion-content>
   <ion-card-content>
-    <ion-title>New releases</ion-title>
+    <ion-title color="medium">New releases</ion-title>
     <ion-slides [options]="{ slidesPerView: '2', zoom: false, grabCursor: true }">
       <ion-slide *ngFor="let book of newBooks">
         <app-book-item [isCard]='true' [book]='book'></app-book-item>
@@ -10,7 +10,7 @@
     </ion-slides>
   </ion-card-content>
   <ion-card-content>
-    <ion-title>Best sellers</ion-title>
+    <ion-title color="medium">Best sellers</ion-title>
     <ion-slides [options]="{ slidesPerView: '2', zoom: false, grabCursor: true }">
       <ion-slide *ngFor="let book of bestBooks">
         <app-book-item [isCard]='true' [book]='book'></app-book-item>

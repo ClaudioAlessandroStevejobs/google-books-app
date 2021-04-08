@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Coupon } from '../interfaces/coupon';
 import { Reader } from '../interfaces/reader';
 import { customAlert } from '../utilities/alert';
 @Injectable({
@@ -148,4 +149,12 @@ export class ReaderService {
         return undefined;
       });
   };
+
+  getCoupons = () => {
+    const token = localStorage.getItem('token')!;
+    const headers = new HttpHeaders().set('token', token);
+    return this.httpClient.get(
+      `${this.readerURI}/${localStorage.getItem('id')}/coupons`, { headers }
+    ).toPromise() as Promise<any>;
+  }
 }

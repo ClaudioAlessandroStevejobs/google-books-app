@@ -21,11 +21,7 @@ export class BookItemComponent implements OnInit {
   ngOnInit() {
     this.title = this.book._title;
     this.price = this.book._price;
-    this.img = {
-      "background-image": `url(${this.book._img})`,
-      "background-size": "cover",
-
-    }
+    this.img = this.book._img;
     this.booksService
       .getAuthorName(this.book._author)
       .then((res) => (this.author = res));

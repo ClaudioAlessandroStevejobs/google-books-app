@@ -1,18 +1,21 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { OrdersComponent } from './../orders/orders.component';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { Reader } from 'src/app/interfaces/reader';
 import { Writer } from 'src/app/interfaces/writer';
 import { AuthService } from 'src/app/services/auth.service';
 import { ReaderService } from 'src/app/services/reader.service';
 import { WriterService } from 'src/app/services/writer.service';
 import { toast } from 'src/app/utilities/toast';
+import { CouponShopComponent } from '../coupon-shop/coupon-shop.component';
 @Component({
   selector: 'app-account',
   templateUrl: './account.page.html',
   styleUrls: ['./account.page.scss'],
 })
-export class AccountPage implements OnInit {
+export class AccountPage{
   updatedFund: number;
   @ViewChild('avatarCanvas') avatarCanvas: ElementRef;
   user: Reader | Writer = {
@@ -27,7 +30,7 @@ export class AccountPage implements OnInit {
   };
 
   refillForm = this.formBuilder.group({
-    money: new FormControl(0, Validators.required),
+    money: new FormControl(Validators.required),
   });
 
   constructor(
@@ -35,21 +38,31 @@ export class AccountPage implements OnInit {
     private authService: AuthService,
     private writerService: WriterService,
     private readerService: ReaderService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private modalController: ModalController
   ) {}
   
   _CANVAS: any;
   _CONTEXT: any;
-  ngOnInit() {
+
+  role = () => localStorage.getItem('role');
+  isRefillFromInvalid = () => 
+    this.refillForm.controls['money'].pristine || this.refillForm.controls['money'].value < 1
+  ionViewDidEnter() {
+    console.log("sono l'account");
+    !localStorage.getItem('role') &&
+      this.router.navigate(['logged-out'])
     if (localStorage.getItem('token')) {
       ({
         WRITER: async () => {
           this.user = await this.writerService.getWriter();
           this.updatedFund = this.user._fund;
+          this.drawCanv();
         },
         READER: async () => {
           this.user = await this.readerService.getReader();
           this.updatedFund = this.user._fund;
+          this.drawCanv();
         },
       }[localStorage.getItem('role')]());
     }
@@ -73,21 +86,34 @@ export class AccountPage implements OnInit {
     this._CONTEXT.fill();
   }
 
-  ionViewDidEnter() {
-    this.drawCanv()
-    !localStorage.getItem('role') &&
-      this.router.navigate(['logged-out'])
-  }
-
   logout() {
     this.authService.logout();
     this.router.navigate(['/home']);
-    toast('Logout')
+    toast('Logout');
   }
 
   refill(): void {
     this.readerService.refill(this.refillForm.value.money);
     this.updatedFund += this.refillForm.value.money;
     this.refillForm.controls['money'].setValue(0);
+  }
+
+  async couponsModal() {
+    const modal = await this.modalController.create({
+      component: CouponShopComponent,
+      cssClass: 'my-custom-class'
+    });
+    return await modal.present();
+  }
+
+  async ordersModal() {
+    const modal = await this.modalController.create({
+      component: OrdersComponent,
+      cssClass: 'my-custom-class',
+      componentProps: {
+        reader: this.user,
+      },
+    });
+    return await modal.present();
   }
 }

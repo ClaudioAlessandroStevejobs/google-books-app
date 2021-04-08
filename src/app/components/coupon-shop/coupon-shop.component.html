@@ -1,16 +1,57 @@
-<h2 style="margin-left: 3%;" class="alignment">Generate a coupon</h2>
+<ion-content>
+  <ion-grid fixed="true">
+    <ion-row>
+      <ion-card>
+        <ion-card-header>
+          <ion-row>
+            <ion-col>
+              <ion-icon size="large" name="ticket-outline"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-form [formGroup]="couponsForm">
+                <ion-title>Generate a coupon </ion-title>
+                <ion-row>
+                  <ion-col>
+                    <ion-input type="number" placeholder="Value" name="title" formControlName="money">
+                    </ion-input>
 
-<form (ngSubmit)="logForm()">
-  <ion-item>
-    <ion-label position="stacked">Insert money</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-input type="text" [(ngModel)]="todo.title" placeholder="1234" name="title"></ion-input> <ion-button color="primary">Send</ion-button>
-  </ion-item> 
-  <ion-item>
-    <ion-label position="stacked">Insert mail</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-textarea [(ngModel)]="todo.description" placeholder="example@email.com" name="description"></ion-textarea>
-  </ion-item>
-</form>
+                  </ion-col>
+                </ion-row>
+                <ion-label>and if you want send it to a your friend e-mail!
+                </ion-label>
+                <ion-row>
+                  <ion-col>
+                    <ion-input placeholder="E-mail (Optional)" type="email" inputmode="email" mode="ios"
+                      formControlName="email">
+                    </ion-input>
+                  </ion-col>
+                </ion-row>
+                <ion-button color="primary" shape="round" [disabled]="!couponsForm.valid || isInvalidValue()"
+                  (click)="generateCoupon()">
+                  <ion-icon name="add-outline"></ion-icon>
+                </ion-button>
+              </ion-form>
+            </ion-col>
+          </ion-row>
+
+        </ion-card-header>
+      </ion-card>
+    </ion-row>
+
+
+    <ion-row *ngFor="let coupon of updatedCoupons">
+      <ion-col>
+        <app-coupon [coupon]="coupon"></app-coupon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+
+<ion-fab vertical="top" horizontal="start" slot="fixed">
+  <ion-fab-button (click)="dismiss()">
+    <ion-icon name="chevron-back-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

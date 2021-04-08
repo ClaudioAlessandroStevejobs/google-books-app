@@ -1,4 +1,4 @@
-<app-header tabName="Library"></app-header>
+<app-header tabName="Insights"></app-header>
 <ion-content>
   <ion-item class="divider-medium"></ion-item>
 
@@ -13,7 +13,7 @@
   </ion-row>
 
   <ion-item class="divider-medium"></ion-item>
-  <ion-title *ngIf="fund > 1" color="medium">Books Copies</ion-title>
+  <ion-title *ngIf="fund > 1" color="medium">Solded copies</ion-title>
   <div *ngIf="fund > 1" [ngStyle]='divHeight'>
     <canvas #barCanvas></canvas>
   </div>

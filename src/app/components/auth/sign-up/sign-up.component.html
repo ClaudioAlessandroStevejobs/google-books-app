@@ -12,7 +12,7 @@
   <ion-list>
 
     <ion-item>
-      <ion-label>Where are you from?</ion-label>
+      <ion-label color="medium">Where are you from?</ion-label>
       <ion-select interface="action-sheet" mode="ios" formControlName="selectedNation">
         <ion-select-option *ngFor="let nation of nations" [value]="nation">{{nation}}</ion-select-option>
       </ion-select>
@@ -20,7 +20,6 @@
 
 
     <ion-radio-group value="role" name="role">
-
 
       <ion-row>
         <ion-col>
@@ -38,7 +37,9 @@
           </ion-item>
         </ion-col>
       </ion-row>
+
     </ion-radio-group>
+
   </ion-list>
 
   <ion-button type="submit" (click)="onSubmit()" [disabled]="!signUpForm.valid || !arePasswordsSame()" expand="block"

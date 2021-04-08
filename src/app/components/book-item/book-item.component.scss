@@ -6,14 +6,14 @@ ion-card-header {
     margin: 0;
     // width: 10em;
     height: 15em;
-    
+
 }
 ion-card-content {
     text-align: left; margin: 4px;
 }
 ion-item{
     box-shadow: 0em 1em 4em -1em rgba(161, 161, 161, 0.33); border-radius: 1.3em;
-    
+
 }
 
 ion-thumbnail{
@@ -24,4 +24,8 @@ ion-img{
 }
 div{
     display: flex; flex-direction: column; text-align: left; text-indent: 1.5em
+}
+
+ion-card-subtitle, ion-card-title {
+  text-indent:0
 }

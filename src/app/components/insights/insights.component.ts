@@ -70,7 +70,7 @@ export class InsightsComponent {
         maintainAspectRatio: false,
         scales: {
           xAxes: [{ ticks: { beginAtZero: true, stepSize: 1 }}],
-          yAxes: [{ ticks: { display: true } , display: false }],
+          yAxes: [{ ticks: {mirror: true}}],
         },
       },
     });
