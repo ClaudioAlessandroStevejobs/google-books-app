@@ -1,9 +1,9 @@
-Gugol Bucs Ionic App
+Google Books Ionic App
 Ionic and Angular Web App - Non Native App Exam / Steve Jobs Academy
 
-Required GugolBucs Back-End: 
+Required Google Books Back-End: 
 
-https://github.com/ClaudioAlessandroStevejobs/google-books-server.git
+https://github.com/VincenzoMars/google-books-server.git
 
 Collaborators:
 
