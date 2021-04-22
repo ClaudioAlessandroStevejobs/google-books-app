@@ -21,7 +21,7 @@
             </ion-text>
 
 
-            <ion-form [formGroup]="refillForm">
+            <ion-form [formGroup]="refillForm" *ngIf="role()=='READER'">
               <ion-row>
                 <ion-col>
                   <ion-input placeholder="Refill your wallet" updatedFund="updatedFund" type="number"

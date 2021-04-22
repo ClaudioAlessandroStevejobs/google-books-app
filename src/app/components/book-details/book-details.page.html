@@ -1,34 +1,41 @@
 <ion-content>
   <ion-grid fixed="true">
     <ion-item class="divider-medium"></ion-item>
-    <ion-item class="divider-large"></ion-item>
     <ion-row>
       <ion-col>
         <ion-card>
           <ion-card-content>
             <ion-item class="divider-tiny"></ion-item>
             <ion-row>
-              <ion-col size="6">
+              <ion-title class="ion-text-center">
+                {{book._title}}
+              </ion-title>
+            </ion-row>
+            <ion-item class="divider-tiny"></ion-item>
+            <ion-row>
+              <ion-col>
                 <ion-img [src]="book._img"></ion-img>
               </ion-col>
-              <ion-col size="6">
+            </ion-row>
+            <ion-row>
+              <ion-col>
                 <ion-text>
-                  <h1>Title: {{book._title}}</h1>
-                  <br>
                   <h3>Author: {{author}}</h3>
                   <h2> Genre: {{book._genre}}</h2>
-                  <h5> {{book._launchDate}} </h5>
+                  <h5>Publish date: {{book._launchDate}} </h5>
                 </ion-text>
               </ion-col>
             </ion-row>
             <ion-item class="divider-tiny"></ion-item>
-            <ion-button [disabled]='!isAddable()' (click)="addToCart()" shape="round" color="success">
-              {{book._price }}€
-              <ion-icon name="cart-outline"></ion-icon>
-            </ion-button>
           </ion-card-content>
         </ion-card>
       </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-button [disabled]='!isAddable()' (click)="addToCart()" shape="round" color="success">
+        {{book._price }}€
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-button>
     </ion-row>
   </ion-grid>
 </ion-content>
