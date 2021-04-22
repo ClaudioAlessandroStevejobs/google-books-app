@@ -22,7 +22,10 @@ export class SearchPage implements OnInit, OnChanges {
   async ngOnInit() {
     try {
       this.books = await this.booksService.getBooks();
-      if (localStorage.getItem('token')) 
+      if (
+        localStorage.getItem('token') &&
+        localStorage.getItem('role') === 'READER'
+      )
         this.reader = await this.readerService.getReader();
     } catch (err) {
       throw new Error(err);
@@ -30,20 +33,27 @@ export class SearchPage implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.searchedBooks =
-      this.search !== '' && this.search !== ' '
-        ? this.books.filter(
-            async (book) =>
-              (
-                (await this.booksService.getAuthorName(book._author)).includes(this.search) ||
-                book._title.includes(this.search) ||
-                String(book._price) === this.search
-              ) &&
-              !this.reader?._booksIds.includes(book._id) &&
-              !JSON.parse(localStorage.getItem('inventory')!)?.includes(
-                book._id
-              )
+    const authorNames = [];
+    this.books.map(async (book) => {
+      authorNames.push(
+        (await this.booksService.getAuthorName(book._author)).includes(
+          this.search
         )
+      );
+    });
+
+    this.searchedBooks =
+      this.search.length > 1
+        ? this.books.filter(
+            (book) =>
+              authorNames.includes(this.search) ||
+              book._title.includes(this.search) ||
+              (String(book._price) === this.search &&
+                !this.reader?._booksIds.includes(book._id) &&
+                !JSON.parse(localStorage.getItem('inventory')!)?.includes(
+                  book._id
+                ))
+          )
         : [];
   }
 }

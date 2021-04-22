@@ -10,20 +10,17 @@ export class BooksService {
   constructor(private httpClient: HttpClient) {}
 
   getBooks = () =>
-    this.httpClient.get(`${this.uri}books`)
-    .toPromise()
-    .catch((_) => {
-      alert('Internal server error')
-    }) as Promise<Book[]>;
+    this.httpClient
+      .get(`${this.uri}books`)
+      .toPromise()
+      .catch((_) => {
+        alert('Internal server error');
+      }) as Promise<Book[]>;
 
-  getBooksByIds = async (
-    booksIds: string[] = [],
-  ): Promise<Book[]> => {
+  getBooksByIds = async (booksIds: string[] = []): Promise<Book[]> => {
     try {
       const books = await this.getBooks();
-      return books.filter((book) =>
-        booksIds.includes(book._id)
-      );
+      return books.filter((book) => booksIds.includes(book._id));
     } catch (err) {
       throw new Error(err);
     }
