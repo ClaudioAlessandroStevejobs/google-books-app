@@ -7,5 +7,5 @@ https://github.com/VincenzoMars/google-books-server.git
 
 Collaborators:
 
-https://github.com/ClaudioAlessandroStevejobs
+https://github.com/Joooonny
 https://github.com/robertyna92
